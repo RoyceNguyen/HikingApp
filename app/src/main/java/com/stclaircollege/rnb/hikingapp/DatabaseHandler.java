@@ -32,14 +32,34 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String COLUMN_LOCATION = "location";
     private static final String COLUMN_STARTDATE = "startdate";
     private static final String COLUMN_ENDDATE = "enddate";
-    private static final String COLUMN_NOOFDAYS= "attackdamage";
-    private static final String COLUMN_ATTACKSPEED = "attackspeed";
-    private static final String COLUMN_MAGICDAMAGE = "magicdamage";
-    private static final String COLUMN_CRIT = "crit";
-    private static final String COLUMN_CRITDAMAGE = "critdamage";
-    private static final String COLUMN_HEALTH = "health";
-    private static final String COLUMN_ARMOR = "ARMOR";
-    private static final String COLUMN_MAGICRESIST = "magicresist";
+    private static final String COLUMN_NOOFDAYS= "numberofdays";
+    private static final String COLUMN_REMINDER = "reminder";
+    private static final String COLUMN_HIGHLIGHTS = "highlights";
+    private static final String COLUMN_WILDLIFE = "wildlife";
+    private static final String COLUMN_PICTURE = "picture";
+    private static final Integer COLUMN_COMPLETEDHIKES = 0;
+    private static final Double COLUMN_MILES = 0.0;
+    private static final Double COLUMN_KILOMETRES = 0.0;
+    private static final String COLUMN_DAYSHIKE = "dayshike";
+    private static final String COLUMN_BAGNIGHTS = "bagnights";
+    private static final String COLUMN_CONTACTINFO = "contactinfo";
+
+    /**
+     * Participant Table Column Names
+     */
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_PHONENUMBER = "phonenumber";
+
+    /**
+     * Hike Table Column Names
+     */
+    private static final String COLUMN_HIKENAME= "hikename";
+    private static final String COLUMN_LENGTH = "length";
+    private static final String COLUMN_DAILYBREAKDOWN = "dailybreakdown";
+    //private static final Double COLUMN_MILES = 0.0;
+   // private static final Double COLUMN_KILOMETRES = 0.0;
+    //private static final String COLUMN_CONTACTINFO = "contactinfo";
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
