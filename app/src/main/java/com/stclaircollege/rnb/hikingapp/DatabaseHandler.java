@@ -37,9 +37,9 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String COLUMN_HIGHLIGHTS = "highlights";
     private static final String COLUMN_WILDLIFE = "wildlife";
     private static final String COLUMN_PICTURE = "picture";
-    private static final Integer COLUMN_COMPLETEDHIKES = 0;
-    private static final Double COLUMN_MILES = 0.0;
-    private static final Double COLUMN_KILOMETRES = 0.0;
+    private static final String COLUMN_COMPLETEDHIKES = "completedhike";
+    private static final String COLUMN_MILES = "comlumnmiles";
+    private static final String COLUMN_KILOMETRES = "kilometres";
     private static final String COLUMN_DAYSHIKE = "dayshike";
     private static final String COLUMN_BAGNIGHTS = "bagnights";
     private static final String COLUMN_CONTACTINFO = "contactinfo";
