@@ -23,6 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String TABLE_PARTICIPANT = "participant";
     private static final String TABLE_LOCATION = "location";
     private static final String TABLE_LOCATIONHIKE = "locationhike";
+    private static final String TABLE_CONTACTINFO = "contactinfo";
 
     /**
      * Common column names
@@ -69,8 +70,13 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String COLUMN_COUNTRY = "USA";
 
     /**
-     * Location Hike Juction Table Column Names
+     * Contact info Table Column Names
      */
+    private static final String COLUMN_CONTACTNAME = "contactname";
+    private static final String COLUMN_CONTACTLOCATION = "contactlocation";
+    private static final String COLUMN_CONTACTPHONE = "contactphone";
+
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
