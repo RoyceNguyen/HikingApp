@@ -21,6 +21,8 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String TABLE_TRIP = "trip";
     private static final String TABLE_HIKE = "hike";
     private static final String TABLE_PARTICIPANT = "participant";
+    private static final String TABLE_LOCATION = "location";
+    private static final String TABLE_LOCATIONHIKE = "locationhike";
 
     /**
      * Common column names
@@ -29,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
     /**
      * Trip Table Column Names
      */
-    private static final String COLUMN_LOCATION = "location";
+
     private static final String COLUMN_STARTDATE = "startdate";
     private static final String COLUMN_ENDDATE = "enddate";
     private static final String COLUMN_NOOFDAYS= "numberofdays";
@@ -37,15 +39,13 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String COLUMN_HIGHLIGHTS = "highlights";
     private static final String COLUMN_WILDLIFE = "wildlife";
     private static final String COLUMN_PICTURE = "picture";
-    private static final String COLUMN_COMPLETEDHIKES = "completedhike";
-    private static final String COLUMN_MILES = "comlumnmiles";
     private static final String COLUMN_KILOMETRES = "kilometres";
     private static final String COLUMN_DAYSHIKE = "dayshike";
     private static final String COLUMN_BAGNIGHTS = "bagnights";
-    private static final String COLUMN_CONTACTINFO = "contactinfo";
+
 
     /**
-     * Participant Table Column Names
+     * Participants Table Column Names
      */
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
@@ -57,10 +57,20 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String COLUMN_HIKENAME= "hikename";
     private static final String COLUMN_LENGTH = "length";
     private static final String COLUMN_DAILYBREAKDOWN = "dailybreakdown";
-    //private static final Double COLUMN_MILES = 0.0;
-   // private static final Double COLUMN_KILOMETRES = 0.0;
+     private static final String COLUMN_HIKEKILOMETRES = "hikekilometres";
     //private static final String COLUMN_CONTACTINFO = "contactinfo";
 
+    /**
+     * Location Table Column Names
+     */
+
+    private static final String COLUMN_LOCATION = "location";
+    private static final String COLUMN_CITY = "city";
+    private static final String COLUMN_COUNTRY = "USA";
+
+    /**
+     * Location Hike Juction Table Column Names
+     */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
