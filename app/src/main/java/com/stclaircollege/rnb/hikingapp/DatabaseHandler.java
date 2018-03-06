@@ -23,7 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String TABLE_PARTICIPANT = "participant";
     private static final String TABLE_LOCATION = "location";
     private static final String TABLE_LOCATIONHIKE = "locationhike";
-    private static final String TABLE_CONTACTINFO = "contactinfo";
+    private static final String TABLE_TYPE = "type";
 
     /**
      * Common column names
@@ -32,17 +32,18 @@ public class DatabaseHandler extends SQLiteOpenHelper
     /**
      * Trip Table Column Names
      */
-
+//need location column
     private static final String COLUMN_STARTDATE = "startdate";
     private static final String COLUMN_ENDDATE = "enddate";
+    private static final String COLUMN_ORGANIZER = "organizer";
     private static final String COLUMN_NOOFDAYS= "numberofdays";
     private static final String COLUMN_REMINDER = "reminder";
     private static final String COLUMN_HIGHLIGHTS = "highlights";
     private static final String COLUMN_WILDLIFE = "wildlife";
     private static final String COLUMN_PICTURE = "picture";
-    private static final String COLUMN_KILOMETRES = "kilometres";
     private static final String COLUMN_DAYSHIKE = "dayshike";
     private static final String COLUMN_BAGNIGHTS = "bagnights";
+    private static final String COLUMN_CONTACTINFO = "contactinfo";
 
 
     /**
@@ -58,7 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
     private static final String COLUMN_HIKENAME= "hikename";
     private static final String COLUMN_LENGTH = "length";
     private static final String COLUMN_DAILYBREAKDOWN = "dailybreakdown";
-     private static final String COLUMN_HIKEKILOMETRES = "hikekilometres";
+    private static final String COLUMN_KILOMETRES = "kilometres";
     //private static final String COLUMN_CONTACTINFO = "contactinfo";
 
     /**
@@ -67,15 +68,80 @@ public class DatabaseHandler extends SQLiteOpenHelper
 
     private static final String COLUMN_LOCATION = "location";
     private static final String COLUMN_CITY = "city";
-    private static final String COLUMN_COUNTRY = "USA";
+    private static final String COLUMN_COUNTRY = "country";
+    private static final String COLUMN_TYPE = "type";
+// HAS PHONE NUMBER
 
     /**
-     * Contact info Table Column Names
+     * LocationHike Table Column Names
      */
-    private static final String COLUMN_CONTACTNAME = "contactname";
-    private static final String COLUMN_CONTACTLOCATION = "contactlocation";
-    private static final String COLUMN_CONTACTPHONE = "contactphone";
+    private static final String COLUMN_LOCATIONID = "locationid";
+    private static final String COLUMN_HIKEID = "hikeid";
+    
 
+    /**
+     * Create statements for all of our tables
+     */
+
+    private static final String CREATE_TRIP_TABLE = "CREATE TABLE " +
+            TABLE_TRIP + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_LOCATION + " INTEGER REFERENCES " +
+            TABLE_LOCATION + "("+COLUMN_ID+")," +
+            COLUMN_STARTDATE + " TEXT, " +
+            COLUMN_ENDDATE + " TEXT, " +
+            COLUMN_ORGANIZER + " INTEGER REFERENCES " +
+            TABLE_PARTICIPANT + "("+COLUMN_ID+")," +
+            COLUMN_NOOFDAYS + " TEXT, " +
+            COLUMN_REMINDER + " TEXT, " +
+            COLUMN_HIGHLIGHTS + " TEXT, " +
+            COLUMN_WILDLIFE + " TEXT, " +
+            COLUMN_PICTURE + " INTEGER REFERENCES " +
+            COLUMN_DAYSHIKE + " INTEGER, " +
+            COLUMN_BAGNIGHTS + " INTEGER, " +
+            COLUMN_CONTACTINFO + " INTEGER REFERENCES  " +
+            TABLE_PARTICIPANT + "("+COLUMN_ID+")," +
+            ")";
+
+    private static final String CREATE_HIKE_TABLE = "CREATE TABLE " +
+            TABLE_HIKE + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_HIKENAME + " TEXT, " +
+            COLUMN_LENGTH + " TEXT, " +
+            COLUMN_DAILYBREAKDOWN + " TEXT, " +
+            COLUMN_KILOMETRES + " DECIMAL, " +
+            COLUMN_CONTACTINFO + " INTEGER REFERENCES  " +
+            TABLE_LOCATION + "("+COLUMN_ID+")," +
+            ")";
+
+    private static final String CREATE_PARTICIPANT_TABLE = "CREATE TABLE " +
+            TABLE_PARTICIPANT + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_NAME + " TEXT, " +
+            COLUMN_EMAIL + " TEXT, " +
+            COLUMN_PHONENUMBER + " TEXT, " +
+            ")";
+
+    private static final String CREATE_LOCATION_TABLE = "CREATE TABLE " +
+            TABLE_LOCATION + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_LOCATION + " TEXT, " +
+            COLUMN_CITY + " TEXT, " +
+            COLUMN_COUNTRY + " TEXT, " +
+            COLUMN_TYPE + " TEXT, " +
+            ")";
+    private static final String CREATE_LOCATIONHIKE_TABLE = "CREATE TABLE " +
+            TABLE_LOCATIONHIKE + "(" +
+            COLUMN_LOCATIONID + " INTEGER REFERENCES  " +
+            TABLE_LOCATION + "("+COLUMN_ID+")," +
+            COLUMN_HIKEID + " INTEGER REFERENCES  " +
+            TABLE_HIKE+ "("+COLUMN_ID+")," +
+            ")";
+    private static final String CREATE_TYPE_TABLE = "CREATE TABLE " +
+            TABLE_TYPE + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_NAME + " TEXT, " +
+            ")";
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
