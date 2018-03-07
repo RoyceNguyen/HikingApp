@@ -2,6 +2,7 @@ package com.stclaircollege.rnb.hikingapp;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.content.Context;
 /**
  * Created by Royce on 1/30/2018.
  */
@@ -77,7 +78,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
      */
     private static final String COLUMN_LOCATIONID = "locationid";
     private static final String COLUMN_HIKEID = "hikeid";
-    
+
 
     /**
      * Create statements for all of our tables
@@ -142,14 +143,44 @@ public class DatabaseHandler extends SQLiteOpenHelper
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_NAME + " TEXT, " +
             ")";
-
+    public DatabaseHandler(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+    /**
+     * Create the tables inside of the database
+     * @param db
+     */
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_HIKE_TABLE);
+        db.execSQL(CREATE_TRIP_TABLE);
+        db.execSQL(CREATE_PARTICIPANT_TABLE);
+        db.execSQL(CREATE_LOCATION_TABLE);
+        db.execSQL(CREATE_LOCATIONHIKE_TABLE);
+        db.execSQL(CREATE_TYPE_TABLE);
+    }
+    /**
+     * When the database upgrades delete the old tables and recreate them
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HIKE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOCATIONHIKE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOCATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRIP);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PARTICIPANT);
+        onCreate(db);
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    /**
+     * CRUD OPERATIONS FOR THE DATABASE AND TABLES
+     */
 
-    }
+    /**
+     * CREATE new objects for the tables
+     *
+     */
+
+    
 }
