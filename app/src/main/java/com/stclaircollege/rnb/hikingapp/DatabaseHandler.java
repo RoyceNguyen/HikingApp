@@ -1,5 +1,6 @@
 package com.stclaircollege.rnb.hikingapp;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
@@ -181,6 +182,77 @@ public class DatabaseHandler extends SQLiteOpenHelper
      * CREATE new objects for the tables
      *
      */
+    public void addTrip(Trip trip) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LOCATION, trip.getLocation());
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
+        values.put(COLUMN_STARTDATE, trip.getStartDate());
+        values.put(COLUMN_ENDDATE, trip.getEndDate());
+        values.put(COLUMN_ORGANIZER, trip.getOrganizer());
+        values.put(COLUMN_NOOFDAYS, trip.getNoOfDays());
+        values.put(COLUMN_REMINDER, trip.getReminder());
+        values.put(COLUMN_HIGHLIGHTS, trip.getHighlights());
+        values.put(COLUMN_WILDLIFE, trip.getWildlife());
+        values.put(COLUMN_DAYSHIKE, trip.getDaysHike());
+        values.put(COLUMN_BAGNIGHTS, trip.getBagNights());
+        values.put(COLUMN_CONTACTINFO, trip.getContactInfo());
+        db.insert(TABLE_TRIP, null, values);
+        db.close();
+    }
+    public void addHike(Hike hike) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_HIKENAME, hike.getHikeName());
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
+        values.put(COLUMN_LENGTH, hike.getLength());
+        values.put(COLUMN_DAILYBREAKDOWN, hike.getDailybreakdown());
+        values.put(COLUMN_KILOMETRES, hike.getKilometres());
+        values.put(COLUMN_CONTACTINFO, hike.getContactInfo());
+        db.insert(TABLE_HIKE, null, values);
+        db.close();
+    }
+    public void addLocation(Location location) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LOCATION, location.getLocation());
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
+        values.put(COLUMN_CITY, location.getCity());
+        values.put(COLUMN_COUNTRY, location.getCountry());
+        values.put(COLUMN_TYPE, location.getType());
+        db.insert(TABLE_LOCATION, null, values);
+        db.close();
+    }
+    public void addParticipant(Participant participant) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, participant.getName());
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
+        values.put(COLUMN_EMAIL, participant.getEmail());
+        values.put(COLUMN_PHONENUMBER, participant.getPhoneNumber());
+        db.insert(TABLE_PARTICIPANT, null, values);
+        db.close();
+    }
+    public void addLocationHike(LocationHike locationHike) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LOCATIONID, locationHike.getLocationId());
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
+        values.put(COLUMN_HIKEID, locationHike.getHikeId());
+        db.insert(TABLE_LOCATIONHIKE, null, values);
+        db.close();
+    }
+    public void addType(Type type) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TYPE, type.getName());
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
+        db.insert(TABLE_TYPE, null, values);
+        db.close();
+    }
+
+
+
 
 
 }
