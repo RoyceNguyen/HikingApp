@@ -223,6 +223,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
         values.put(COLUMN_CITY, location.getCity());
         values.put(COLUMN_COUNTRY, location.getCountry());
         values.put(COLUMN_TYPE, location.getType());
+        values.put(COLUMN_PHONENUMBER, location.getPhoneNumber());
         db.insert(TABLE_LOCATION, null, values);
         db.close();
     }
@@ -299,8 +300,73 @@ public class DatabaseHandler extends SQLiteOpenHelper
         }
         return tripsList;
     }
-   
+    //creating getHike and getAllHike
+    public Hike getHike(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_HIKE,
+                new String[] { COLUMN_ID, COLUMN_HIKENAME,COLUMN_LENGTH,COLUMN_DAILYBREAKDOWN,COLUMN_KILOMETRES }, COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
 
+        if (cursor != null)
+            cursor.moveToFirst();
+        Hike hike = new Hike(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getDouble(4));
+        return hike;
+    }
+
+    public ArrayList<Hike> getAllHike() {
+        ArrayList<Hike> hikesList = new ArrayList<Hike>();
+        String selectQuery = "SELECT * FROM " + TABLE_HIKE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Hike hike = new Hike();
+                hike.setId(Integer.parseInt(cursor.getString(0)));
+                hike.setHikeName(cursor.getString(1));
+                hike.setLength(cursor.getString(2));
+                hike.setDailybreakdown(cursor.getString(3));
+                hike.setKilometres(cursor.getDouble(4));
+                hikesList.add(hike);
+            } while (cursor.moveToNext());
+        }
+        return hikesList;
+    }
+//creating getLocation and getAllLocation
+public Location getLocation(int id) {
+    SQLiteDatabase db = this.getReadableDatabase();
+    Cursor cursor = db.query(TABLE_LOCATION,
+            new String[] { COLUMN_ID, COLUMN_LOCATION,COLUMN_CITY,COLUMN_COUNTRY,COLUMN_TYPE,COLUMN_PHONENUMBER }, COLUMN_ID + "=?",
+            new String[] { String.valueOf(id) }, null, null, null, null);
+
+    if (cursor != null)
+        cursor.moveToFirst();
+    Location location = new Location(Integer.parseInt(cursor.getString(0)),
+            cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getInt(4),cursor.getString(5));
+    return location;
+}
+
+    public ArrayList<Location> getAllLocation() {
+        ArrayList<Location> locationsList = new ArrayList<Location>();
+        String selectQuery = "SELECT * FROM " + TABLE_LOCATION;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Location location = new Location();
+                location.setId(Integer.parseInt(cursor.getString(0)));
+                location.setLocation(cursor.getString(1));
+                location.setCity(cursor.getString(2));
+                location.setCountry(cursor.getString(3));
+                location.setType(cursor.getDouble(4));
+                locationsList.add(location);
+            } while (cursor.moveToNext());
+        }
+        return locationsList;
+    }
+    
 
 
 
