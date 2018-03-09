@@ -112,8 +112,6 @@ public class DatabaseHandler extends SQLiteOpenHelper
             COLUMN_LENGTH + " TEXT, " +
             COLUMN_DAILYBREAKDOWN + " TEXT, " +
             COLUMN_KILOMETRES + " DECIMAL, " +
-            COLUMN_CONTACTINFO + " INTEGER REFERENCES  " +
-            TABLE_LOCATION + "("+COLUMN_ID+")," +
             ")";
 
     private static final String CREATE_PARTICIPANT_TABLE = "CREATE TABLE " +
@@ -130,7 +128,9 @@ public class DatabaseHandler extends SQLiteOpenHelper
             COLUMN_LOCATION + " TEXT, " +
             COLUMN_CITY + " TEXT, " +
             COLUMN_COUNTRY + " TEXT, " +
-            COLUMN_TYPE + " TEXT, " +
+            COLUMN_TYPE + " INTEGER REFERENCES  " +
+            TABLE_TYPE+ "("+COLUMN_ID+")," +
+            COLUMN_PHONENUMBER + " TEXT, " +
             ")";
     private static final String CREATE_LOCATIONHIKE_TABLE = "CREATE TABLE " +
             TABLE_LOCATIONHIKE + "(" +
@@ -208,7 +208,6 @@ public class DatabaseHandler extends SQLiteOpenHelper
         values.put(COLUMN_LENGTH, hike.getLength());
         values.put(COLUMN_DAILYBREAKDOWN, hike.getDailybreakdown());
         values.put(COLUMN_KILOMETRES, hike.getKilometres());
-        values.put(COLUMN_CONTACTINFO, hike.getContactInfo());
         db.insert(TABLE_HIKE, null, values);
         db.close();
     }
