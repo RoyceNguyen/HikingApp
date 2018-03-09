@@ -257,11 +257,12 @@ public class DatabaseHandler extends SQLiteOpenHelper
      * READ objects from database
      */
     //creating getTrip and getAllTrips
-    /*
+
     public Trip getTrip(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_TRIP,
-                new String[] { COLUMN_ID, COLUMN_LOCATION, COLUMN_STARTDATE, COLUMN_ENDDATE,COLUMN_ORGANIZER,COLUMN_NOOFDAYS,COLUMN_REMINDER,COLUMN_HIGHLIGHTS,COLUMN_WILDLIFE,COLUMN_DAYSHIKE,COLUMN_BAGNIGHTS,COLUMN_CONTACTINFO}, COLUMN_ID + "=?",
+                new String[] { COLUMN_ID, COLUMN_LOCATION, COLUMN_STARTDATE, COLUMN_ENDDATE,COLUMN_ORGANIZER,COLUMN_NOOFDAYS,
+                        COLUMN_REMINDER,COLUMN_HIGHLIGHTS,COLUMN_WILDLIFE,COLUMN_DAYSHIKE,COLUMN_BAGNIGHTS,COLUMN_CONTACTINFO}, COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 
         if (cursor != null)
@@ -280,16 +281,25 @@ public class DatabaseHandler extends SQLiteOpenHelper
         if (cursor.moveToFirst()) {
             do {
                 Trip trip = new Trip();
-                build.setId(Integer.parseInt(cursor.getString(0)));
-                build.setName(cursor.getString(1));
-                build.setWeapon(cursor.getInt(2));
-                build.setGear(cursor.getInt(3));
-                buildsList.add(build);
+                trip.setId(Integer.parseInt(cursor.getString(0)));
+                trip.setLocation(cursor.getInt(1));
+                trip.setStartDate(cursor.getString(2));
+                trip.setEndDate(cursor.getString(3));
+                trip.setOrganizer(cursor.getInt(4));
+                trip.setNoOfDays(cursor.getString(5));
+                trip.setReminder(cursor.getString(6));
+                trip.setHighlights(cursor.getString(7));
+                trip.setWildlife(cursor.getString(8));
+                trip.setDaysHike(cursor.getInt(9));
+                trip.setBagNights(cursor.getInt(10));
+                trip.setContactInfo(cursor.getInt(11));
+
+                tripsList.add(trip);
             } while (cursor.moveToNext());
         }
-        return buildsList;
+        return tripsList;
     }
-    */
+   
 
 
 
