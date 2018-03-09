@@ -6,23 +6,23 @@ package com.stclaircollege.rnb.hikingapp;
 
 public class Trip {
     private int id;
-    private String location;
+    private int location;
     private String startDate;
     private String endDate;
-    private String organizer;
+    private int organizer;
     private String noOfDays;
     private String reminder;
     private String highlights;
     private String wildlife;
     private int daysHike;
     private int bagNights;
-    private String contactInfo;
+    private int contactInfo;
 
     public Trip(){
 
     }
-    public Trip(int id,String location,String startDate,String endDate,String organizer,String noOfDays,String reminder,
-                String highlights,String wildlife,int daysHike,int bagNights,String contactInfo){
+    public Trip(int id,int location,String startDate,String endDate,int organizer,String noOfDays,String reminder,
+                String highlights,String wildlife,int daysHike,int bagNights,int contactInfo){
         this.id = id;
         this.location = location;
         this.startDate = startDate;
@@ -46,11 +46,11 @@ public class Trip {
         this.id = id;
     }
 
-    public String getLocation() {
+    public int getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(int location) {
         this.location = location;
     }
 
@@ -70,11 +70,11 @@ public class Trip {
         this.endDate = endDate;
     }
 
-    public String getOrganizer() {
+    public int getOrganizer() {
         return organizer;
     }
 
-    public void setOrganizer(String organizer) {
+    public void setOrganizer(int organizer) {
         this.organizer = organizer;
     }
 
@@ -126,11 +126,11 @@ public class Trip {
         this.bagNights = bagNights;
     }
 
-    public String getContactInfo() {
+    public int getContactInfo() {
         return contactInfo;
     }
 
-    public void setContactInfo(String contactInfo) {
+    public void setContactInfo(int contactInfo) {
         this.contactInfo = contactInfo;
     }
 }

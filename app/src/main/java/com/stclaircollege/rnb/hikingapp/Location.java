@@ -9,7 +9,7 @@ public class Location {
     private String location;
     private String city;
     private String country;
-    private String type;
+    private int type;
     private String phoneNumber;
 
 
@@ -20,13 +20,13 @@ public class Location {
 
 
 
-    public Location(int id, String location, String city, String country, String type, String phoneNumber){
+    public Location(int id, String location, String city, String country, int type, String phoneNumber){
         this.id = id;
         this.location = location;
         this.city = city;
         this.country = country;
         this.type = type;
-        this.phoneNumber = phoneNumber
+        this.phoneNumber = phoneNumber;
 
     }
 
@@ -62,11 +62,11 @@ public class Location {
         this.country = country;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
