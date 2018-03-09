@@ -250,6 +250,9 @@ public class DatabaseHandler extends SQLiteOpenHelper
         db.insert(TABLE_TYPE, null, values);
         db.close();
     }
+    /**
+     * READ objects from database
+     */
 
 
 
