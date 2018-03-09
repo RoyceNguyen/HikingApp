@@ -366,7 +366,100 @@ public Location getLocation(int id) {
         }
         return locationsList;
     }
-    
+    //creating getPartcipant and getAllParticipants
+    public Participant getParticipant(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_PARTICIPANT,
+                new String[] { COLUMN_ID, COLUMN_NAME,COLUMN_EMAIL,COLUMN_EMAIL}, COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        Participant participant = new Participant(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        return participant;
+    }
+
+    public ArrayList<Participant> getAllParticipant() {
+        ArrayList<Participant> participantsList = new ArrayList<Participant>();
+        String selectQuery = "SELECT * FROM " + TABLE_PARTICIPANT;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Participant participant = new Participant();
+                participant.setId(Integer.parseInt(cursor.getString(0)));
+                participant.setName(cursor.getString(1));
+                participant.setEmail(cursor.getString(2));
+                participant.setPhoneNumber(cursor.getString(3));
+                participantsList.add(participant);
+            } while (cursor.moveToNext());
+        }
+        return participantsList;
+    }
+    //creating getLocationHike and getAllLocationHike
+
+    public LocationHike getLocationHike(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_LOCATIONHIKE,
+                new String[] { COLUMN_LOCATIONID,COLUMN_HIKEID}, COLUMN_LOCATIONID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        LocationHike locationHike = new LocationHike(Integer.parseInt(cursor.getString(0)),
+                Integer.parseInt(cursor.getString(1)));
+        return locationHike;
+    }
+
+    public ArrayList<LocationHike> getAllLocationHike() {
+        ArrayList<LocationHike> locationHikesList = new ArrayList<LocationHike>();
+        String selectQuery = "SELECT * FROM " + TABLE_LOCATIONHIKE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                LocationHike locationHike = new LocationHike();
+                locationHike.setLocationId(Integer.parseInt(cursor.getString(0)));
+                locationHike.setHikeId(Integer.parseInt(cursor.getString(1)));
+                locationHikesList.add(locationHike);
+            } while (cursor.moveToNext());
+        }
+        return locationHikesList;
+    }
+    //creating getType and getAllTypes
+
+    public Type getType(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_TYPE,
+                new String[] { COLUMN_ID, COLUMN_NAME}, COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        Type type = new Type(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1));
+        return type;
+    }
+
+    public ArrayList<Type> getAllType() {
+        ArrayList<Type> typesList = new ArrayList<Type>();
+        String selectQuery = "SELECT * FROM " + TABLE_TYPE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Type type = new Type();
+                type.setId(Integer.parseInt(cursor.getString(0)));
+                type.setName(cursor.getString(1));
+                typesList.add(type);
+            } while (cursor.moveToNext());
+        }
+        return typesList;
+    }
 
 
 
