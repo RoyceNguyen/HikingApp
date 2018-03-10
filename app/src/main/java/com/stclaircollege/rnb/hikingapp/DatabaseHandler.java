@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.print.PageRange;
 
 import java.util.ArrayList;
 
@@ -460,6 +461,67 @@ public Location getLocation(int id) {
         }
         return typesList;
     }
+    /**
+     * UPDATE objects in database
+     */
+    public int updateTrip(Trip trip) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LOCATION, trip.getLocation());
+        values.put(COLUMN_STARTDATE, trip.getStartDate());
+        values.put(COLUMN_ENDDATE, trip.getEndDate());
+        values.put(COLUMN_ORGANIZER, trip.getOrganizer());
+        values.put(COLUMN_NOOFDAYS, trip.getNoOfDays());
+        values.put(COLUMN_REMINDER, trip.getReminder());
+        values.put(COLUMN_HIGHLIGHTS, trip.getHighlights());
+        values.put(COLUMN_WILDLIFE, trip.getWildlife());
+        values.put(COLUMN_DAYSHIKE, trip.getDaysHike());
+        values.put(COLUMN_BAGNIGHTS, trip.getBagNights());
+        values.put(COLUMN_CONTACTINFO, trip.getContactInfo());
+        return db.update(TABLE_TRIP, values, COLUMN_ID + " = ?", new String[] { String.valueOf(trip.getId()) });
+    }
+
+    public int updateHike(Hike hike) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_HIKENAME, hike.getHikeName());
+        values.put(COLUMN_LENGTH, hike.getLength());
+        values.put(COLUMN_DAILYBREAKDOWN, hike.getDailybreakdown());
+        values.put(COLUMN_KILOMETRES, hike.getKilometres());
+        return db.update(TABLE_HIKE, values, COLUMN_ID + " = ?", new String[] { String.valueOf(hike.getId()) });
+    }
+    public int updateParticipant(Participant participant) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, participant.getName());
+        values.put(COLUMN_EMAIL, participant.getEmail());
+        values.put(COLUMN_PHONENUMBER, participant.getPhoneNumber());
+        return db.update(TABLE_PARTICIPANT, values, COLUMN_ID + " = ?", new String[] { String.valueOf(participant.getId()) });
+    }
+    public int updateLocation(Location location) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LOCATION, location.getLocation());
+        values.put(COLUMN_CITY, location.getCity());
+        values.put(COLUMN_COUNTRY, location.getCountry());
+        values.put(COLUMN_TYPE, location.getType());
+        values.put(COLUMN_PHONENUMBER, location.getPhoneNumber());
+        return db.update(TABLE_LOCATION, values, COLUMN_ID + " = ?", new String[] { String.valueOf(location.getId()) });
+    }
+    public int updateLocationHike(LocationHike locationHike) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LOCATIONID, locationHike.getLocationId());
+        values.put(COLUMN_HIKEID, locationHike.getHikeId());
+        return db.update(TABLE_LOCATIONHIKE, values, COLUMN_ID + " = ?", new String[] { String.valueOf(locationHike.getHikeId()) });
+    }
+    public int updateType(Type type) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, type.getName());
+        return db.update(TABLE_TYPE, values, COLUMN_ID + " = ?", new String[] { String.valueOf(type.getId()) });
+    }
+
 
 
 
