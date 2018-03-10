@@ -10,19 +10,17 @@ public class Hike {
     private String length;
     private String dailybreakdown;
     private double kilometres;
-    private String contactInfo;
 
     public Hike(){
 
     }
 
-    public  Hike(int id,String hikeName,String length,String dailybreakdown,double kilometres,String contactInfo){
+    public  Hike(int id,String hikeName,String length,String dailybreakdown,double kilometres){
         this.id = id;
         this.hikeName = hikeName;
         this.length = length;
         this.dailybreakdown = dailybreakdown;
         this.kilometres = kilometres;
-        this.contactInfo = contactInfo;
 
     }
 
@@ -66,11 +64,4 @@ public class Hike {
         this.kilometres = kilometres;
     }
 
-    public String getContactInfo() {
-        return contactInfo;
-    }
-
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
 }
