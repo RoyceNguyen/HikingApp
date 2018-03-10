@@ -521,8 +521,47 @@ public Location getLocation(int id) {
         values.put(COLUMN_NAME, type.getName());
         return db.update(TABLE_TYPE, values, COLUMN_ID + " = ?", new String[] { String.valueOf(type.getId()) });
     }
-
-
+    /**
+     * DELETE objects from database
+     */
+    public void deleteTrip(long trip_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TRIP, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(trip_id) });
+    }
+    public void deleteHike(long hike_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_HIKE, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(hike_id) });
+    }
+    public void deleteLocation(long location_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_LOCATION, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(location_id) });
+    }
+    public void deleteParticipant(long participant_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PARTICIPANT, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(participant_id) });
+    }
+    public void deleteLocationHike(long locationHike_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_LOCATIONHIKE, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(locationHike_id) });
+    }
+    public void deleteType(long type_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TYPE, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(type_id) });
+    }
+    /**
+     * Closing the database connection
+     */
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
+    }
 
 
 
