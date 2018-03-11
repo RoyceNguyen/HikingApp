@@ -555,7 +555,7 @@ public Location getLocation(int id) {
                 new String[] { String.valueOf(type_id) });
     }
     /**
-     * Closing the database connection
+     * Closing the database connections
      */
     public void closeDB() {
         SQLiteDatabase db = this.getReadableDatabase();
