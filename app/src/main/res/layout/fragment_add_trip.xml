@@ -67,6 +67,7 @@
             android:id="@+id/editText4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/searchView"
             android:layout_toEndOf="@+id/textView9"
             android:ems="10"
@@ -82,7 +83,7 @@
             android:layout_alignBottom="@+id/editText3"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/editText3"
-            android:layout_toStartOf="@+id/spinner"
+            android:layout_toStartOf="@+id/editText6"
             android:gravity="left|center"
             android:padding="4dp"
             android:text="End Date:" />
@@ -91,6 +92,7 @@
             android:id="@+id/editText3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText4"
             android:layout_toEndOf="@+id/textView10"
             android:ems="10"
@@ -106,6 +108,7 @@
             android:layout_alignBottom="@+id/button2"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/editText3"
+            android:layout_toStartOf="@+id/editText3"
             android:layout_weight="1"
             android:gravity="left|center"
             android:padding="4dp"
@@ -115,16 +118,18 @@
             android:id="@+id/spinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText3"
+            android:layout_above="@+id/textView2"
+            android:layout_below="@+id/textView10"
             android:layout_toEndOf="@+id/textView11"
+            android:layout_toStartOf="@+id/button2"
             android:padding="4dp" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="37dp"
             android:layout_height="37dp"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText3"
-            android:layout_toEndOf="@+id/spinner"
             android:padding="4dp"
             android:text="+" />
 
@@ -144,6 +149,7 @@
             android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/textView11"
             android:layout_toEndOf="@+id/textView2"
             android:ems="10"
@@ -153,9 +159,9 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView8"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/editText6"
-            android:layout_toStartOf="@+id/editText"
             android:gravity="left|center"
             android:padding="4dp"
             android:text="Number of days:" />
@@ -164,6 +170,7 @@
             android:id="@+id/editText6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText"
             android:layout_toEndOf="@+id/textView5"
             android:ems="10"
@@ -173,6 +180,7 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button3"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView5"
             android:gravity="left|center"
@@ -183,7 +191,8 @@
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/button2"
+            android:layout_above="@+id/textView12"
+            android:layout_alignEnd="@+id/spinner"
             android:layout_below="@+id/editText6"
             android:layout_toEndOf="@+id/textView8" />
 
@@ -191,9 +200,27 @@
             android:id="@+id/button3"
             android:layout_width="37dp"
             android:layout_height="37dp"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText6"
-            android:layout_toEndOf="@+id/spinner2"
             android:text="+" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView8"
+            android:text="Daily Breakdown:" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView12" />
 
     </RelativeLayout>
 
