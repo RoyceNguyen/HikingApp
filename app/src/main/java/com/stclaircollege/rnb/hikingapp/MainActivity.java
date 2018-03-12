@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity
         //adding all the interaction listeners
         MainFragment.OnFragmentInteractionListener,
         PastHikeFragment.OnFragmentInteractionListener,
-        SummaryFragment.OnFragmentInteractionListener {
+        SummaryFragment.OnFragmentInteractionListener,
+        AddTripFragment.OnFragmentInteractionListener{
 
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity
             tran.commit();
         } else if (id == R.id.nav_addtrip) {
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new AddTripFragment());
             tran.commit();
 
         } else if (id == R.id.nav_pasthikes) {
