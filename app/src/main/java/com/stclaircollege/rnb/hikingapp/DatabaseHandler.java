@@ -117,6 +117,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
             COLUMN_LENGTH + " TEXT, " +
             COLUMN_DAILYBREAKDOWN + " TEXT, " +
             COLUMN_KILOMETRES + " DECIMAL, " +
+
             ")";
 
     private static final String CREATE_PARTICIPANT_TABLE = "CREATE TABLE " +
@@ -133,9 +134,14 @@ public class DatabaseHandler extends SQLiteOpenHelper
             COLUMN_LOCATION + " TEXT, " +
             COLUMN_CITY + " TEXT, " +
             COLUMN_COUNTRY + " TEXT, " +
+
+            //COLUMN_TYPE + " TEXT, " +
+            COLUMN_CONTACTINFO + " TEXT,  " +
+
             COLUMN_TYPE + " INTEGER REFERENCES  " +
             TABLE_TYPE+ "("+COLUMN_ID+")," +
             COLUMN_PHONENUMBER + " TEXT, " +
+
             ")";
     private static final String CREATE_LOCATIONHIKE_TABLE = "CREATE TABLE " +
             TABLE_LOCATIONHIKE + "(" +
