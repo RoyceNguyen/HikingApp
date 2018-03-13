@@ -1,4 +1,5 @@
 package com.stclaircollege.rnb.hikingapp;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -20,7 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
 
-public class PlaceAutocomplete extends AppCompatActivity implements
+public class PlaceAutocomplete extends Fragment implements
         GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks {
     private static final String LOG_TAG = "PlaceAutocomplete";
