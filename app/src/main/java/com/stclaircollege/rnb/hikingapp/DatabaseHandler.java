@@ -361,7 +361,8 @@ public Location getLocation(int id) {
                 location.setLocation(cursor.getString(1));
                 location.setCity(cursor.getString(2));
                 location.setCountry(cursor.getString(3));
-                location.setType(cursor.getDouble(4));
+                location.setType(cursor.getInt(4));
+                location.setPhoneNumber(cursor.getString(5));
                 locationsList.add(location);
             } while (cursor.moveToNext());
         }
