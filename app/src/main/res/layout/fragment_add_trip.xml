@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/textView12"
             android:layout_alignEnd="@+id/spinner"
-            android:layout_below="@+id/editText6"
+            android:layout_below="@+id/textView5"
             android:layout_toEndOf="@+id/textView8" />
 
         <Button
