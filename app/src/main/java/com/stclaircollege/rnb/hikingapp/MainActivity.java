@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_summary) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new SummaryFragment());
             tran.commit();
 
         } else if (id == R.id.nav_share) {
