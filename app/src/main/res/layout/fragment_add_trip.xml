@@ -39,7 +39,8 @@
             android:layout_alignParentTop="true"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="Location:" />
+            android:text="Location:"
+            android:textSize="@dimen/textSize" />
 
         <SearchView
             android:id="@+id/searchView"
@@ -61,7 +62,8 @@
             android:layout_toStartOf="@+id/editText3"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="Start Date:" />
+            android:text="Start Date:"
+            android:textSize="@dimen/textSize" />
 
         <EditText
             android:id="@+id/editText4"
@@ -86,7 +88,8 @@
             android:layout_toStartOf="@+id/editText6"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="End Date:" />
+            android:text="End Date:"
+            android:textSize="@dimen/textSize" />
 
         <EditText
             android:id="@+id/editText3"
@@ -112,7 +115,8 @@
             android:layout_weight="1"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="Trip Organizer:" />
+            android:text="Trip Organizer:"
+            android:textSize="@dimen/textSize" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -126,12 +130,14 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText3"
+            android:background="@color/colorPrimary"
             android:padding="4dp"
-            android:text="+" />
+            android:text="+"
+            android:textColor="@color/textAndIcons" />
 
         <TextView
             android:id="@+id/textView2"
@@ -143,7 +149,8 @@
             android:layout_below="@+id/textView11"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="Participants:" />
+            android:text="Participants:"
+            android:textSize="@dimen/textSize" />
 
         <EditText
             android:id="@+id/editText"
@@ -164,7 +171,8 @@
             android:layout_alignTop="@+id/editText6"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="Number of days:" />
+            android:text="Number of days:"
+            android:textSize="@dimen/textSize" />
 
         <EditText
             android:id="@+id/editText6"
@@ -185,7 +193,8 @@
             android:layout_below="@+id/textView5"
             android:gravity="left|center"
             android:padding="4dp"
-            android:text="Accomodations:" />
+            android:text="Accomodations:"
+            android:textSize="@dimen/textSize" />
 
         <Spinner
             android:id="@+id/spinner2"
@@ -198,11 +207,13 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText6"
-            android:text="+" />
+            android:background="@color/colorPrimary"
+            android:text="+"
+            android:textColor="@color/textAndIcons" />
 
         <TextView
             android:id="@+id/textView12"
@@ -211,7 +222,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView8"
-            android:text="Daily Breakdown:" />
+            android:text="Daily Breakdown:"
+            android:textSize="@dimen/textSize" />
 
         <MultiAutoCompleteTextView
             android:id="@+id/multiAutoCompleteTextView"
