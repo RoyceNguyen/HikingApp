@@ -95,27 +95,36 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
         } else if (id == R.id.nav_addtrip) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new AddTripFragment());
             tran.commit();
 
         } else if (id == R.id.nav_pasthikes) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
 
         } else if (id == R.id.nav_summary) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
 
         } else if (id == R.id.nav_share) {
-
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.commit();
         } else if (id == R.id.nav_send) {
-
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
