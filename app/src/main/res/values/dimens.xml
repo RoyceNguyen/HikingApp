@@ -9,4 +9,5 @@
     <dimen name="buttonSize">30dp</dimen>
     <dimen name="summaryTextSize">24sp</dimen>
     <dimen name="titleTextSize">22sp</dimen>
+    <dimen name="padding_addTrip">4dp</dimen>
 </resources>

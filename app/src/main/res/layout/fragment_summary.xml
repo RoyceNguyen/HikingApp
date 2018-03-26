@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.stclaircollege.rnb.hikingapp.SummaryFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -24,20 +25,26 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView3"
         android:layout_gravity="center"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="31dp"
         android:layout_weight="1"
-        android:text="Hikes Completed:"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/hikesCompleted_summary"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView13"
         android:layout_alignBottom="@+id/textView13"
         android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:layout_toEndOf="@+id/textView4"
+        android:ems="10"
+        android:inputType="number"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/summaryTextSize" />
 
@@ -47,18 +54,27 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView13"
         android:layout_below="@+id/textView13"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="30dp"
-        android:text="Kilometers:"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/kilometers_summary"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView15"
         android:layout_alignBottom="@+id/textView15"
-        android:layout_alignStart="@+id/textView14"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:inputType="number"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/summaryTextSize" />
 
@@ -66,20 +82,30 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView15"
         android:layout_alignStart="@+id/textView15"
         android:layout_below="@+id/textView15"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="30dp"
-        android:text="No. of Day Hikes:"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/miles_summary"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView17"
-        android:layout_alignBottom="@+id/textView17"
-        android:layout_alignStart="@+id/textView16"
+        android:layout_above="@+id/textView19"
+        android:layout_alignStart="@+id/editText5"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:inputType="number"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/summaryTextSize" />
 
@@ -89,17 +115,57 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView17"
         android:layout_below="@+id/textView17"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="30dp"
-        android:text="No. of Bag Nights:"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/numOfDayHikes_summary"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView4"
+        android:layout_alignStart="@+id/editText7"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/summaryTextSize" />
+
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView18"
-        android:layout_alignTop="@+id/textView19"
+        android:layout_alignStart="@+id/textView19"
+        android:layout_below="@+id/textView19"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="29dp"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/numOfBagNights_summary"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <EditText
+        android:id="@+id/editText9"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:layout_toEndOf="@+id/textView4"
+        android:ems="10"
+        android:inputType="number"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/summaryTextSize" />
 

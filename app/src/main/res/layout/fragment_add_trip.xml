@@ -39,8 +39,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="Location:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/location_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/textView7"
-            android:padding="4dp">
+            android:padding="@dimen/padding_addTrip">
 
         </SearchView>
 
@@ -63,8 +63,8 @@
             android:layout_below="@+id/textView7"
             android:layout_toStartOf="@+id/editText3"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="Start Date:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/startDate_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -78,7 +78,7 @@
             android:ems="10"
             android:inputType="date"
             android:labelFor="@+id/textView9"
-            android:padding="4dp"
+            android:padding="@dimen/padding_addTrip"
             android:text="" />
 
         <TextView
@@ -90,8 +90,8 @@
             android:layout_alignTop="@+id/editText3"
             android:layout_toStartOf="@+id/editText6"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="End Date:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/endDate_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -105,7 +105,7 @@
             android:ems="10"
             android:inputType="date"
             android:labelFor="@+id/textView10"
-            android:padding="4dp"
+            android:padding="@dimen/padding_addTrip"
             android:text="" />
 
         <TextView
@@ -118,8 +118,8 @@
             android:layout_toStartOf="@+id/editText3"
             android:layout_weight="1"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="Trip Organizer:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/tripOrganizer_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -131,7 +131,7 @@
             android:layout_below="@+id/textView10"
             android:layout_toEndOf="@+id/textView11"
             android:layout_toStartOf="@+id/button2"
-            android:padding="4dp" />
+            android:padding="@dimen/padding_addTrip" />
 
         <Button
             android:id="@+id/button2"
@@ -140,7 +140,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText3"
             android:background="@color/colorPrimary"
-            android:padding="4dp"
+            android:padding="@dimen/padding_addTrip"
             android:text="+"
             android:textColor="@color/textAndIcons" />
 
@@ -153,8 +153,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView11"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="Participants:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/participants_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -166,18 +166,20 @@
             android:layout_below="@+id/textView11"
             android:layout_toEndOf="@+id/textView2"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:padding="@dimen/padding_addTrip" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/textView8"
             android:layout_alignEnd="@+id/textView8"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/editText6"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="Number of days:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/numOfDays_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -189,7 +191,8 @@
             android:layout_below="@+id/editText"
             android:layout_toEndOf="@+id/textView5"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:padding="@dimen/padding_addTrip" />
 
         <TextView
             android:id="@+id/textView8"
@@ -197,10 +200,10 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/button3"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView5"
+            android:layout_below="@+id/editText6"
             android:gravity="left|center"
-            android:padding="4dp"
-            android:text="Accomodations:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/accommodations_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -211,7 +214,8 @@
             android:layout_above="@+id/textView12"
             android:layout_alignEnd="@+id/spinner"
             android:layout_below="@+id/textView5"
-            android:layout_toEndOf="@+id/textView8" />
+            android:layout_toEndOf="@+id/textView8"
+            android:padding="@dimen/padding_addTrip" />
 
         <Button
             android:id="@+id/button3"
@@ -220,6 +224,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText6"
             android:background="@color/colorPrimary"
+            android:padding="@dimen/padding_addTrip"
             android:text="+"
             android:textColor="@color/textAndIcons" />
 
@@ -230,7 +235,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView8"
-            android:text="Daily Breakdown:"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/dailyBreakdown_addTrip"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
@@ -241,7 +247,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView12" />
+            android:layout_below="@+id/textView12"
+            android:padding="@dimen/padding_addTrip" />
 
     </RelativeLayout>
 
