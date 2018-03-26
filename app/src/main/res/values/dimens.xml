@@ -7,4 +7,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="textSize">16sp</dimen>
     <dimen name="buttonSize">30dp</dimen>
+    <dimen name="summaryTextSize">24sp</dimen>
+    <dimen name="titleTextSize">22sp</dimen>
 </resources>

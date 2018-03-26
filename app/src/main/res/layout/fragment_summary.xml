@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="Summary" />
+        android:text="Summary"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView13"
@@ -24,7 +27,9 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="30dp"
         android:layout_weight="1"
-        android:text="Hikes Completed:" />
+        android:text="Hikes Completed:"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
 
     <TextView
         android:id="@+id/textView14"
@@ -32,7 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView13"
         android:layout_alignBottom="@+id/textView13"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/summaryTextSize" />
 
     <TextView
         android:id="@+id/textView15"
@@ -41,7 +48,9 @@
         android:layout_alignStart="@+id/textView13"
         android:layout_below="@+id/textView13"
         android:layout_marginTop="30dp"
-        android:text="Kilometers:" />
+        android:text="Kilometers:"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
 
     <TextView
         android:id="@+id/textView16"
@@ -49,7 +58,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView15"
         android:layout_alignBottom="@+id/textView15"
-        android:layout_alignStart="@+id/textView14" />
+        android:layout_alignStart="@+id/textView14"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/summaryTextSize" />
 
     <TextView
         android:id="@+id/textView17"
@@ -58,7 +69,9 @@
         android:layout_alignStart="@+id/textView15"
         android:layout_below="@+id/textView15"
         android:layout_marginTop="30dp"
-        android:text="No. of Day Hikes:" />
+        android:text="No. of Day Hikes:"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
 
     <TextView
         android:id="@+id/textView18"
@@ -66,7 +79,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView17"
         android:layout_alignBottom="@+id/textView17"
-        android:layout_alignStart="@+id/textView16" />
+        android:layout_alignStart="@+id/textView16"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/summaryTextSize" />
 
     <TextView
         android:id="@+id/textView19"
@@ -75,13 +90,17 @@
         android:layout_alignStart="@+id/textView17"
         android:layout_below="@+id/textView17"
         android:layout_marginTop="30dp"
-        android:text="No. of Bag Nights:" />
+        android:text="No. of Bag Nights:"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView18"
-        android:layout_alignTop="@+id/textView19" />
+        android:layout_alignTop="@+id/textView19"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/summaryTextSize" />
 
 </RelativeLayout>
