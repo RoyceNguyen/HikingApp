@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HikingApp</string>
+    <string name="app_name">Hiking Itinerary</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -22,5 +22,6 @@
     <string name="miles_summary">Miles:</string>
     <string name="numOfDayHikes_summary">No. Of Day Hikes:</string>
     <string name="numOfBagNights_summary">No. Of Bag Nights:</string>
+    <string name="title_mainscreen">Hiking Itinerary</string>
 
 </resources>
