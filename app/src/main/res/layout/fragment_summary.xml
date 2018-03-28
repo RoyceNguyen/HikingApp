@@ -6,6 +6,7 @@
     tools:context="com.stclaircollege.rnb.hikingapp.SummaryFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <!-- Created Summary layout to show a sum of all data for all past hikes -->
 
 
     <TextView

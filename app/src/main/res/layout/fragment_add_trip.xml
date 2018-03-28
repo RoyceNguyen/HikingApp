@@ -8,6 +8,7 @@
     tools:context="com.stclaircollege.rnb.hikingapp.AddTripFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <!-- Created layout for adding a new trip to the itinerary -->
 
 
     <TextView

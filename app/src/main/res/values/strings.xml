@@ -7,6 +7,8 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <!-- Added default strings to use throughout the app -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
     <string name="location_addTrip">Location:</string>
@@ -23,5 +25,6 @@
     <string name="numOfDayHikes_summary">No. Of Day Hikes:</string>
     <string name="numOfBagNights_summary">No. Of Bag Nights:</string>
     <string name="title_mainscreen">Hiking Itinerary</string>
+    <string name="title_pastHike">Completed Hikes</string>
 
 </resources>
