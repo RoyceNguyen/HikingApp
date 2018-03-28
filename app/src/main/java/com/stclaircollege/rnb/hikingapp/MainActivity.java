@@ -116,11 +116,17 @@ public class MainActivity extends AppCompatActivity
             tran.replace(R.id.content_main, new SummaryFragment());
             tran.commit();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_futuretrips) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new SummaryFragment());
+            tran.commit();
+
+        } else if (id == R.id.nav_contact) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.commit();
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_credits) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new MainFragment());
