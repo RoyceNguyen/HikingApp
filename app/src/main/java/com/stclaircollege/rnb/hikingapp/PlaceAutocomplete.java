@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
@@ -39,25 +41,32 @@ public class PlaceAutocomplete extends Fragment implements
             new LatLng(37.398160, -122.180831), new LatLng(37.430610, -121.972090));
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_place_autocomplete, container, false);
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_place_autocomplete);
+        //setContentView(R.layout.fragment_place_autocomplete);
         mGoogleApiClient = new GoogleApiClient.Builder(PlaceAutocomplete.this)
                 .addApi(Places.GEO_DATA_API)
                 .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
                 .addConnectionCallbacks(this)
                 .build();
-        mAutocompleteTextView = (AutoCompleteTextView) findViewById(R.id
+        mAutocompleteTextView = (AutoCompleteTextView) getView().findViewById(R.id
                 .autoCompleteTextView);
         mAutocompleteTextView.setThreshold(3);
-        mNameTextView = (TextView) findViewById(R.id.name);
-        mAddressTextView = (TextView) findViewById(R.id.address);
-        mIdTextView = (TextView) findViewById(R.id.place_id);
-        mPhoneTextView = (TextView) findViewById(R.id.phone);
-        mWebTextView = (TextView) findViewById(R.id.web);
-        mAttTextView = (TextView) findViewById(R.id.att);
+        mNameTextView =  getView().findViewById(R.id.name);
+        mAddressTextView =  getView().findViewById(R.id.address);
+        mIdTextView =  getView().findViewById(R.id.place_id);
+        mPhoneTextView =  getView().findViewById(R.id.phone);
+        mWebTextView =  getView().findViewById(R.id.web);
+        mAttTextView =  getView().findViewById(R.id.att);
         mAutocompleteTextView.setOnItemClickListener(mAutocompleteClickListener);
-        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+        mPlaceArrayAdapter = new PlaceArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,
                 BOUNDS_MOUNTAIN_VIEW, null);
         mAutocompleteTextView.setAdapter(mPlaceArrayAdapter);
     }
@@ -106,18 +115,18 @@ public class PlaceAutocomplete extends Fragment implements
         Log.i(LOG_TAG, "Google Places API connected.");
 
     }
-
+/*
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Log.e(LOG_TAG, "Google Places API connection failed with error code: "
                 + connectionResult.getErrorCode());
 
-        Toast.makeText(this,
+        //Toast.makeText(this,
                 "Google Places API connection failed with error code:" +
-                        connectionResult.getErrorCode(),
-                Toast.LENGTH_LONG).show();
+                        //connectionResult.getErrorCode(),
+               // Toast.LENGTH_LONG).show();
     }
-
+*/
     @Override
     public void onConnectionSuspended(int i) {
         mPlaceArrayAdapter.setGoogleApiClient(null);
