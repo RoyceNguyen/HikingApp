@@ -36,5 +36,6 @@
     <string name="message_contactUs">We hope you are enjoying the app and it is helping you on your adventures!</string>
     <string name="message2_contactUs">If you want to ask questions or give us suggestions, please reach us at:</string>
     <string name="email">rnbhikingitinerary@gmail.com</string>
+    <string name="title_credits">Credits</string>
 
 </resources>
