@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity
         MainFragment.OnFragmentInteractionListener,
         PastHikeFragment.OnFragmentInteractionListener,
         SummaryFragment.OnFragmentInteractionListener,
-        AddTripFragment.OnFragmentInteractionListener{
+        AddTripFragment.OnFragmentInteractionListener,
+        ContactUsFragment.OnFragmentInteractionListener{
 
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -43,6 +45,13 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
+        //Checking to see if the activity has already been created
+        if(savedInstanceState == null){
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
