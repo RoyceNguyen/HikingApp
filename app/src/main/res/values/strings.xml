@@ -26,11 +26,15 @@
     <string name="numOfBagNights_summary">No. Of Bag Nights:</string>
     <string name="title_mainscreen">Hiking Itinerary</string>
     <string name="title_pastHike">Completed Hikes</string>
-    <string name="hike_title">HIKES</string>
+    <string name="hike_title">Hikes</string>
     <string name="hikeName_addTrip">Hike Name:</string>
     <string name="numOfDayHikes_addTrip">No. Of Day Hikes:</string>
     <string name="numOfBagNights_addTrip">No. Of Bag Nights:</string>
     <string name="distance_addTrip">Distance:</string>
     <string name="contactInfo_addTrip">Contact Info:</string>
+    <string name="title_contactUs">Contact Us</string>
+    <string name="message_contactUs">We hope you are enjoying the app and it is helping you on your adventures!</string>
+    <string name="message2_contactUs">If you want to ask questions or give us suggestions, please reach us at:</string>
+    <string name="email">rnbhikingitinerary@gmail.com</string>
 
 </resources>

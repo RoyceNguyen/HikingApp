@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_contact) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new ContactUsFragment());
             tran.commit();
         } else if (id == R.id.nav_credits) {
             FragmentTransaction tran = fm.beginTransaction();
