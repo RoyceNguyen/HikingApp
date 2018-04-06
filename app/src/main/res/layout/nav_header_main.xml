@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="92dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/ic_hikingLogo_foreground" />
+        app:srcCompat="@mipmap/ic_hikinglogo_foreground" />
 
     <TextView
         android:layout_width="match_parent"

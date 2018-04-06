@@ -25,233 +25,254 @@
         android:textStyle="bold" />
 
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnCount="3"
-        android:padding="4dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/locationLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/locationSearch"
-            android:layout_alignEnd="@+id/startDateLabel"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/location_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
-
-        <SearchView
-            android:id="@+id/locationSearch"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/locationLabel"
-            android:padding="@dimen/padding_addTrip">
+            android:layout_height="match_parent"
+            android:columnCount="3"
+            android:padding="4dp">
 
-        </SearchView>
+            <TextView
+                android:id="@+id/locationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/locationSearch"
+                android:layout_alignEnd="@+id/startDateLabel"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/location_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <TextView
-            android:id="@+id/startDateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/startDate"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/locationLabel"
-            android:layout_toStartOf="@+id/endDate"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/startDate_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <SearchView
+                android:id="@+id/locationSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/locationLabel"
+                android:padding="@dimen/padding_addTrip">
 
-        <EditText
-            android:id="@+id/startDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/locationSearch"
-            android:layout_toEndOf="@+id/startDateLabel"
-            android:ems="10"
-            android:inputType="date"
-            android:labelFor="@+id/startDateLabel"
-            android:padding="@dimen/padding_addTrip"
-            android:text="" />
+            </SearchView>
 
-        <TextView
-            android:id="@+id/endDateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/endDate"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/endDate"
-            android:layout_toStartOf="@+id/noOfDays"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/endDate_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/startDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/startDate"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/locationLabel"
+                android:layout_toStartOf="@+id/endDate"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/startDate_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <EditText
-            android:id="@+id/endDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/startDate"
-            android:layout_toEndOf="@+id/endDateLabel"
-            android:ems="10"
-            android:inputType="date"
-            android:labelFor="@+id/endDateLabel"
-            android:padding="@dimen/padding_addTrip"
-            android:text="" />
+            <EditText
+                android:id="@+id/startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/locationSearch"
+                android:layout_toEndOf="@+id/startDateLabel"
+                android:ems="10"
+                android:inputType="date"
+                android:labelFor="@+id/startDateLabel"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/tripOrganizerLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tripOrganizerButton"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/endDate"
-            android:layout_toStartOf="@+id/endDate"
-            android:layout_weight="1"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/tripOrganizer_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/endDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/endDate"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/endDate"
+                android:layout_toStartOf="@+id/noOfDays"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/endDate_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <Spinner
-            android:id="@+id/tripOrganizerSpinner"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/participantsLabel"
-            android:layout_below="@+id/endDateLabel"
-            android:layout_toEndOf="@+id/tripOrganizerLabel"
-            android:layout_toStartOf="@+id/tripOrganizerButton"
-            android:padding="@dimen/padding_addTrip" />
+            <EditText
+                android:id="@+id/endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/startDate"
+                android:layout_toEndOf="@+id/endDateLabel"
+                android:ems="10"
+                android:inputType="date"
+                android:labelFor="@+id/endDateLabel"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
 
-        <Button
-            android:id="@+id/tripOrganizerButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/endDate"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/padding_addTrip"
-            android:text="+"
-            android:textColor="@color/textAndIcons" />
+            <TextView
+                android:id="@+id/tripOrganizerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tripOrganizerButton"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/endDate"
+                android:layout_toStartOf="@+id/endDate"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/tripOrganizer_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <TextView
-            android:id="@+id/participantsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editText"
-            android:layout_alignEnd="@+id/tripOrganizerLabel"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/tripOrganizerLabel"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/participants_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <Spinner
+                android:id="@+id/tripOrganizerSpinner"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/participantsLabel"
+                android:layout_below="@+id/endDateLabel"
+                android:layout_toEndOf="@+id/tripOrganizerLabel"
+                android:layout_toStartOf="@+id/tripOrganizerButton"
+                android:padding="@dimen/padding_addTrip" />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/tripOrganizerLabel"
-            android:layout_toEndOf="@+id/participantsLabel"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:padding="@dimen/padding_addTrip" />
+            <Button
+                android:id="@+id/tripOrganizerButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding_addTrip"
+                android:text="+"
+                android:textColor="@color/textAndIcons" />
 
-        <TextView
-            android:id="@+id/noOfDaysLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/accommodationsLabel"
-            android:layout_alignEnd="@+id/accommodationsLabel"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/noOfDays"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/numOfDays_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/participantsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/editText"
+                android:layout_alignEnd="@+id/tripOrganizerLabel"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tripOrganizerLabel"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/participants_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <EditText
-            android:id="@+id/noOfDays"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/editText"
-            android:layout_toEndOf="@+id/noOfDaysLabel"
-            android:ems="10"
-            android:inputType="number"
-            android:padding="@dimen/padding_addTrip" />
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tripOrganizerLabel"
+                android:layout_toEndOf="@+id/participantsLabel"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/padding_addTrip" />
 
-        <TextView
-            android:id="@+id/accommodationsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/button3"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/noOfDays"
-            android:gravity="left|center"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/accommodations_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/noOfDaysLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/accommodationsLabel"
+                android:layout_alignEnd="@+id/accommodationsLabel"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/noOfDays"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/numOfDays_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/dailyBreakdownLabel"
-            android:layout_alignEnd="@+id/tripOrganizerSpinner"
-            android:layout_below="@+id/noOfDaysLabel"
-            android:layout_toEndOf="@+id/accommodationsLabel"
-            android:padding="@dimen/padding_addTrip" />
+            <EditText
+                android:id="@+id/noOfDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/editText"
+                android:layout_toEndOf="@+id/noOfDaysLabel"
+                android:ems="10"
+                android:inputType="number"
+                android:padding="@dimen/padding_addTrip" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/noOfDays"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/padding_addTrip"
-            android:text="+"
-            android:textColor="@color/textAndIcons" />
+            <TextView
+                android:id="@+id/accommodationsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/button3"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/noOfDays"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/accommodations_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
 
-        <TextView
-            android:id="@+id/dailyBreakdownLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/accommodationsLabel"
-            android:padding="@dimen/padding_addTrip"
-            android:text="@string/dailyBreakdown_addTrip"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/textSize" />
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/dailyBreakdownLabel"
+                android:layout_alignEnd="@+id/tripOrganizerSpinner"
+                android:layout_below="@+id/noOfDaysLabel"
+                android:layout_toEndOf="@+id/accommodationsLabel"
+                android:padding="@dimen/padding_addTrip" />
 
-        <MultiAutoCompleteTextView
-            android:id="@+id/dailyBreakdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/dailyBreakdownLabel"
-            android:padding="@dimen/padding_addTrip" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/noOfDays"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding_addTrip"
+                android:text="+"
+                android:textColor="@color/textAndIcons" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/hikeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/spinner2"
+                android:gravity="center"
+                android:text="HIKES"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dailyBreakdownLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/accommodationsLabel"
+                android:layout_marginTop="150dp"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/dailyBreakdown_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/dailyBreakdown"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/dailyBreakdownLabel"
+                android:layout_marginTop="47dp"
+                android:padding="@dimen/padding_addTrip" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
 
 </LinearLayout>
 
