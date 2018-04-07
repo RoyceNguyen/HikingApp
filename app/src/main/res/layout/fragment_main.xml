@@ -29,6 +29,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="40dp"
-        android:src="@mipmap/ic_hikingLogo_foreground" />
+        android:src="@mipmap/ic_hikinglogo_foreground" />
 
 </RelativeLayout>
