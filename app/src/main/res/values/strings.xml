@@ -25,6 +25,7 @@
     <string name="kilometers_summary">Kilometers:</string>
     <string name="miles_summary">Miles:</string>
     <string name="numOfDayHikes_summary">No. of Day Hikes:</string>
+    <string name="numOfDBagNights_summary">No. of Day Hikes:</string>
     <string name="bagHikes">Bag Hikes:</string>
     <string name="distance">Distance:</string>
     <string name="contactInfo">Contact Info:</string>
