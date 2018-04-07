@@ -8,6 +8,8 @@ import android.content.Context;
 
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.Model.Location;
+import com.stclaircollege.rnb.hikingapp.Model.LocationHike;
+import com.stclaircollege.rnb.hikingapp.Model.Participant;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
 import com.stclaircollege.rnb.hikingapp.Model.Type;
 
