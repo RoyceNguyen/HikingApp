@@ -23,19 +23,23 @@ public class MainActivity extends AppCompatActivity
         MainFragment.OnFragmentInteractionListener,
         PastHikeFragment.OnFragmentInteractionListener,
         SummaryFragment.OnFragmentInteractionListener,
-        AddTripFragment.OnFragmentInteractionListener{
+        AddTripFragment.OnFragmentInteractionListener,
+        ContactUsFragment.OnFragmentInteractionListener{
 
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
+    public static FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +47,13 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
+        //Checking to see if the activity has already been created
+        if(savedInstanceState == null){
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -95,27 +106,43 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
         } else if (id == R.id.nav_addtrip) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new AddTripFragment());
             tran.commit();
 
         } else if (id == R.id.nav_pasthikes) {
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new PastHikeFragment());
             tran.commit();
 
         } else if (id == R.id.nav_summary) {
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new SummaryFragment());
             tran.commit();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_futuretrips) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new SummaryFragment());
+            tran.commit();
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_contact) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new ContactUsFragment());
+            tran.commit();
+        } else if (id == R.id.nav_credits) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

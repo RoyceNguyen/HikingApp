@@ -1,13 +1,36 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.stclaircollege.rnb.hikingapp.PastHikeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <!-- Adding listview to past hikes fragments to show all hikes that have been completed -->
+
+
     <TextView
+        android:id="@+id/completedHikesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/title_pastHike"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ListView
+            android:id="@+id/pastHikesList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

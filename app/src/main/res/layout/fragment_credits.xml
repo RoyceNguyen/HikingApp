@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.stclaircollege.rnb.hikingapp.CreditsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!-- Creating credits page -->
+
+
+    <TextView
+        android:id="@+id/creditsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/title_credits"
+        android:textAllCaps="true"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/creditsTitle"
+        android:layout_marginTop="17dp"
+        android:text="Blaze:"
+        android:padding="@dimen/padding_addTrip"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView5"
+        android:padding="@dimen/padding_addTrip"
+        android:text="Layout"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView6"
+        android:padding="@dimen/padding_addTrip"
+        android:layout_marginTop="131dp"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        android:text="Royce:" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:padding="@dimen/padding_addTrip"
+        android:text="Database"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+</RelativeLayout>

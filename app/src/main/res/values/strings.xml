@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HikingApp</string>
+    <string name="app_name">Hiking Itinerary</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,6 +7,35 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <!-- Added default strings to use throughout the app -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="location_addTrip">Location:</string>
+    <string name="startDate_addTrip">Start Date:</string>
+    <string name="endDate_addTrip">End Date:</string>
+    <string name="tripOrganizer_addTrip">Trip Organizer:</string>
+    <string name="participants_addTrip">Participants:</string>
+    <string name="numOfDays_addTrip">No. Of Days:</string>
+    <string name="accommodations_addTrip">Accommodations:</string>
+    <string name="dailyBreakdown_addTrip">Daily Breakdown:</string>
+    <string name="hikesCompleted_summary">Hikes Completed:</string>
+    <string name="kilometers_summary">Kilometers:</string>
+    <string name="miles_summary">Miles:</string>
+    <string name="numOfDayHikes_summary">No. Of Day Hikes:</string>
+    <string name="numOfBagNights_summary">No. Of Bag Nights:</string>
+    <string name="title_mainscreen">Hiking Itinerary</string>
+    <string name="title_pastHike">Completed Hikes</string>
+    <string name="hike_title">Hikes</string>
+    <string name="hikeName_addTrip">Hike Name:</string>
+    <string name="numOfDayHikes_addTrip">No. Of Day Hikes:</string>
+    <string name="numOfBagNights_addTrip">No. Of Bag Nights:</string>
+    <string name="distance_addTrip">Distance:</string>
+    <string name="contactInfo_addTrip">Contact Info:</string>
+    <string name="title_contactUs">Contact Us</string>
+    <string name="message_contactUs">We hope you are enjoying the app and it is helping you on your adventures!</string>
+    <string name="message2_contactUs">If you want to ask questions or give us suggestions, please reach us at:</string>
+    <string name="email">rnbhikingitinerary@gmail.com</string>
+    <string name="title_credits">Credits</string>
+
 </resources>

@@ -1,13 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.stclaircollege.rnb.hikingapp.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <!-- Created title page for when the user opens the app and is presented with this screen to begin with -->
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/mainScreenTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/title_mainscreen"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/mainScreenImage"
+        android:layout_width="match_parent"
+        android:layout_height="342dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_hikinglogo_foreground" />
+
+</RelativeLayout>
