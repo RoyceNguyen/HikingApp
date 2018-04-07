@@ -5,7 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
-import android.print.PageRange;
+
+import com.stclaircollege.rnb.hikingapp.Model.Hike;
+import com.stclaircollege.rnb.hikingapp.Model.Location;
+import com.stclaircollege.rnb.hikingapp.Model.Trip;
+import com.stclaircollege.rnb.hikingapp.Model.Type;
 
 import java.util.ArrayList;
 

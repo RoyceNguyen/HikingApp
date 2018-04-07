@@ -1,4 +1,4 @@
-package com.stclaircollege.rnb.hikingapp;
+package com.stclaircollege.rnb.hikingapp.Model;
 
 /**
  * Created by Royce on 3/8/2018.

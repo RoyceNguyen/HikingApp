@@ -5,7 +5,7 @@
 
     android:orientation="vertical"
     android:padding="4dp"
-    tools:context="com.stclaircollege.rnb.hikingapp.AddTripFragment">
+    tools:context="com.stclaircollege.rnb.hikingapp.Fragment.AddTripFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <!-- Created layout for adding a new trip to the itinerary -->
