@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:12.0.0'
     implementation 'com.google.android.gms:play-services-location:12.0.0'
     implementation 'com.google.android.gms:play-services-places:12.0.0'
-    //implementation 'com.github.drawers:SpinnerDatePicker:1.0.6'
+    implementation 'com.github.drawers:SpinnerDatePicker:1.0.6'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'com.github.greenfrvr:hashtag-view:1.3.1'
 
