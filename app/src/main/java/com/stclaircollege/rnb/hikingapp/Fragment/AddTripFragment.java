@@ -105,7 +105,7 @@ public class AddTripFragment extends Fragment {
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
                 .build();
         autocompleteFragment.setFilter(typeFilter);
-
+        //datepicker for stardate and enddate
         text_start_date = view.findViewById(R.id.text_start_date);
         text_start_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +138,29 @@ public class AddTripFragment extends Fragment {
                         .defaultDate(Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.MONTH),Calendar.getInstance().get(Calendar.DATE))
                         .build()
                         .show();
+            }
+        });
+        //spinner for trip organizer and let you input whos the trip organizer and select from the spinner list
+        spinner_trip_organizer = view.findViewById(R.id.spinner_trip_organizer);
+        btn_trip_organizer = view.findViewById(R.id.btn_trip_organizer);
+        btn_trip_organizer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .content("Input trip organizer")
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                if  (input.toString().trim().length()==0) return;
+                                list_members.add(input.toString());
+                                String[] array = new String[list_members.size()];
+                                list_members.toArray(array);
+                                ArrayAdapter<String> adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, array);
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                spinner_trip_organizer.setAdapter(adapter);
+                            }
+                        }).show();
             }
         });
         
