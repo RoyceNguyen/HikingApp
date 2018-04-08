@@ -52,44 +52,33 @@ import java.util.List;
 public class AddTripFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
+    private TextView text_start_date;
+    private TextView text_end_date;
+    private Spinner spinner_trip_organizer;
+    private Button btn_trip_organizer;
+    private Button btn_participants;
+    private EditText edit_number_of_days;
+    private EditText edit_accommodations;
+    private EditText edit_hike_name;
+    private HashtagView hashtags;
+    //Creating an arraylist for list of organizer and participants
+    List<String> list_members = new ArrayList<>();
+    List<String> list_participants = new ArrayList<>();
+
+
 
     public AddTripFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddTripFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddTripFragment newInstance(String param1, String param2) {
-        AddTripFragment fragment = new AddTripFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        this.list_members = new ArrayList<>();
+        this.list_participants = new ArrayList<>();
     }
 
     @Override
@@ -100,6 +89,7 @@ public class AddTripFragment extends Fragment {
         return view;
     }
     void bindView(View view) {
+        //implementing google places autocomplete
         SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
