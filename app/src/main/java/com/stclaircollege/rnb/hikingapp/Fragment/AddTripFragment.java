@@ -65,7 +65,7 @@ public class AddTripFragment extends Fragment {
     //Creating an arraylist for list of organizer and participants
     List<String> list_members = new ArrayList<>();
     List<String> list_participants = new ArrayList<>();
-
+    List<String> list_temp = new ArrayList<>();
 
 
     public AddTripFragment() {
@@ -163,9 +163,65 @@ public class AddTripFragment extends Fragment {
                         }).show();
             }
         });
-        
-    }
+        //button to add and select participants
+        btn_participants = view.findViewById(R.id.btn_participants);
+        btn_participants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(getContext())
+                        .title("Select participants")
+                        .items(list_members)
+                        .itemsCallbackMultiChoice(
+                                null,
+                                new MaterialDialog.ListCallbackMultiChoice() {
+                                    @Override
+                                    public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                                        list_temp.clear();
+                                        for (int i = 0; i < which.length; i++) {
+                                            list_temp.add(list_members.get(which[i]));
+                                        }
+                                        return true;
+                                    }
+                                })
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                list_participants = list_temp;
+                                setHashTagData();
+                                dialog.dismiss();
+                            }
+                        })
+                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .alwaysCallMultiChoiceCallback()
+                        .autoDismiss(false)
+                        .positiveText("Add")
+                        .neutralText("Cancel")
+                        .show();
+            }
+        });
+        edit_number_of_days = view.findViewById(R.id.edit_number_of_days);
+        edit_accommodations = view.findViewById(R.id.edit_accommodations);
+        edit_hike_name = view.findViewById(R.id.edit_hike_name);
+        hashtags = view.findViewById(R.id.hashtags);
 
+    }
+//function to customize the inputed data
+    private void setHashTagData() {
+        hashtags.setData(list_participants, new HashtagView.DataTransform<String>() {
+            @Override
+            public CharSequence prepare(String item) {
+                SpannableString spannableString = new SpannableString(item);
+                spannableString.setSpan(new SuperscriptSpan(), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#efeef2")), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                return spannableString;
+            }
+        });
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
