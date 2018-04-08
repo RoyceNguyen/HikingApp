@@ -77,6 +77,7 @@ public class AddTripFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //initialzing arraylists
         this.list_members = new ArrayList<>();
         this.list_participants = new ArrayList<>();
     }
@@ -104,6 +105,42 @@ public class AddTripFragment extends Fragment {
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
                 .build();
         autocompleteFragment.setFilter(typeFilter);
+
+        text_start_date = view.findViewById(R.id.text_start_date);
+        text_start_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SpinnerDatePickerDialogBuilder()
+                        .context(getContext())
+                        .callback(new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                text_start_date.setText(String.format("%4d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
+                            }
+                        })
+                        .defaultDate(Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.MONTH),Calendar.getInstance().get(Calendar.DATE))
+                        .build()
+                        .show();
+            }
+        });
+        text_end_date = view.findViewById(R.id.text_end_date);
+        text_end_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SpinnerDatePickerDialogBuilder()
+                        .context(getContext())
+                        .callback(new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                text_end_date.setText(String.format("%4d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
+                            }
+                        })
+                        .defaultDate(Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.MONTH),Calendar.getInstance().get(Calendar.DATE))
+                        .build()
+                        .show();
+            }
+        });
+        
     }
 
 
@@ -111,7 +148,7 @@ public class AddTripFragment extends Fragment {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
-        }
+}
     }
 
     @Override
