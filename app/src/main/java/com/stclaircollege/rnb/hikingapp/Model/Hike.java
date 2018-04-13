@@ -5,63 +5,23 @@ package com.stclaircollege.rnb.hikingapp.Model;
  */
 
 public class Hike {
-    private int id;
-    private String hikeName;
-    private String length;
-    private String dailybreakdown;
-    private double kilometres;
+    public int id;
+    public String hikeName;
+    public int noOfDayHikes;
+    public int noOfBagNights;
+    public float distance;
+    public int unit; // 0 is km, 1 is mile
+    public String contactInfo;
+    public String dailyBreakdown;
 
-    public Hike(){
-
-    }
-
-    public  Hike(int id,String hikeName,String length,String dailybreakdown,double kilometres){
-        this.id = id;
-        this.hikeName = hikeName;
-        this.length = length;
-        this.dailybreakdown = dailybreakdown;
-        this.kilometres = kilometres;
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getHikeName() {
-        return hikeName;
-    }
-
-    public void setHikeName(String hikeName) {
-        this.hikeName = hikeName;
-    }
-
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
-    }
-
-    public String getDailybreakdown() {
-        return dailybreakdown;
-    }
-
-    public void setDailybreakdown(String dailybreakdown) {
-        this.dailybreakdown = dailybreakdown;
-    }
-
-    public double getKilometres() {
-        return kilometres;
-    }
-
-    public void setKilometres(double kilometres) {
-        this.kilometres = kilometres;
+    public Hike() {
+        this.hikeName = "";
+        this.noOfBagNights = 0;
+        this.noOfDayHikes = 0;
+        this.distance = 0;
+        this.unit = 0;
+        this.contactInfo = "";
+        this.dailyBreakdown = "";
     }
 
 }
