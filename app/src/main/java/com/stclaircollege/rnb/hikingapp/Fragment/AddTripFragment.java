@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -29,6 +31,8 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.greenfrvr.hashtagview.HashtagView;
+import com.stclaircollege.rnb.hikingapp.Adapter.HikeAdapter;
+import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.R;
 import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
@@ -51,9 +55,15 @@ public class AddTripFragment extends Fragment {
     private EditText edit_hike_name;
     private HashtagView hashtags;
 
+    private RecyclerView recyclerView;
+    private List<Hike>list_hikes = new ArrayList<>();
+    private HikeAdapter adapter;
+
     List<String> list_members = new ArrayList<>();
     List<String> list_participants = new ArrayList<>();
     List<String> list_temp = new ArrayList<>();
+    this.list_hikes = new ArrayList<>();
+    this.list_hikes.add(new Hike());
 
 
     public AddTripFragment() {
@@ -72,7 +82,15 @@ public class AddTripFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_trip, container, false);
         bindView(view);
+        setRecyclerView();
         return view;
+    }
+
+    void setRecyclerView() {
+        adapter = new HikeAdapter(getContext(), list_hikes);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+        recyclerView.setNestedScrollingEnabled(false);
     }
 
     void bindView(View view) {
@@ -89,7 +107,7 @@ public class AddTripFragment extends Fragment {
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
                 .build();
         autocompleteFragment.setFilter(typeFilter);
-
+        recyclerView = view.findViewById(R.id.recyclerView);
         text_start_date = view.findViewById(R.id.text_start_date);
         text_start_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,6 +208,23 @@ public class AddTripFragment extends Fragment {
         edit_accommodations = view.findViewById(R.id.edit_accommodations);
         edit_hike_name = view.findViewById(R.id.edit_hike_name);
         hashtags = view.findViewById(R.id.hashtags);
+
+        view.findViewById(R.id.btn_add_hike).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list_hikes.add(new Hike());
+                setRecyclerView();
+            }
+        });
+        view.findViewById(R.id.btn_remove_hike).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (list_hikes.size() > 1) {
+                    list_hikes.remove(list_hikes.size() - 1);
+                    setRecyclerView();
+                }
+            }
+        });
     }
 
     private void setHashTagData() {
