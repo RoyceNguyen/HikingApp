@@ -1,4 +1,4 @@
-package com.stclaircollege.rnb.hikingapp;
+package com.stclaircollege.rnb.hikingapp.Util;
 
 import android.content.ContentValues;
 import android.database.Cursor;

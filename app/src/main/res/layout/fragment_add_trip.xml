@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -129,7 +129,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
             android:gravity="center_vertical"
             android:padding="@dimen/padding_addTrip">
 
@@ -144,7 +145,7 @@
             <LinearLayout
                 android:id="@+id/spinner_participants"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/main_edittext" >
@@ -153,9 +154,9 @@
                     android:layout_gravity="center_vertical"
                     style="@style/HashtagView"
                     app:rowGravity="left"
+                    app:tagBackground="@drawable/hashtag_background"
                     app:tagTextColor="@android:color/black"/>
             </LinearLayout>
-
             <Button
                 android:id="@+id/btn_participants"
                 android:layout_width="30dp"
@@ -226,128 +227,11 @@
             android:textAllCaps="true"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/titleTextSize" />
-
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/padding_addTrip">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="left|center"
-                android:padding="@dimen/padding_addTrip"
-                android:text="@string/hikeName_summary"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/textSize" />
-
-            <EditText
-                android:id="@+id/edit_hike_name"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/main_edittext"
-                android:inputType="text"
-                android:padding="@dimen/padding_addTrip"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/padding_addTrip">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="left|center"
-                android:padding="@dimen/padding_addTrip"
-                android:text="@string/numOfDayHikes_summary"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/textSize" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/main_edittext"
-                android:inputType="number"
-                android:padding="@dimen/padding_addTrip"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/padding_addTrip">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="left|center"
-                android:padding="@dimen/padding_addTrip"
-                android:text="@string/bagHikes"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/textSize" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/main_edittext"
-                android:inputType="text"
-                android:padding="@dimen/padding_addTrip"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/padding_addTrip">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="left|center"
-                android:padding="@dimen/padding_addTrip"
-                android:text="@string/distance"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/textSize" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/main_edittext"
-                android:inputType="number"
-                android:padding="@dimen/padding_addTrip"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/padding_addTrip">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="left|center"
-                android:padding="@dimen/padding_addTrip"
-                android:text="@string/contactInfo"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/textSize" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/main_edittext"
-                android:inputType="text"
-                android:padding="@dimen/padding_addTrip"
-                android:text="" />
-        </LinearLayout>
-
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -355,6 +239,7 @@
             android:padding="@dimen/padding_addTrip">
 
             <Button
+                android:id="@+id/btn_add_hike"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
@@ -366,6 +251,7 @@
                 android:textSize="20dp" />
 
             <Button
+                android:id="@+id/btn_remove_hike"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
@@ -374,28 +260,6 @@
                 android:text="-"
                 android:textColor="@color/textAndIcons"
                 android:textSize="20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_addTrip">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:gravity="left|center"
-                android:padding="@dimen/padding_addTrip"
-                android:text="@string/dailyBreakdown_addTrip"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/textSize" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/main_edittext"
-                android:gravity="left"
-                android:inputType="text"
-                android:padding="@dimen/padding_addTrip"
-                android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -488,4 +352,4 @@
                 android:textSize="20dp" />
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView >
