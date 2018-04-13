@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri){
 
     }
-    /*
+
     @Override
     public void onClickCreatTripButton() {
 
@@ -143,5 +143,5 @@ public class MainActivity extends AppCompatActivity
     public void onClickClearButton() {
 
     }
-    */
+
 }

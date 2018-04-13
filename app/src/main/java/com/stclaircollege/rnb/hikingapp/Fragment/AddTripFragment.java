@@ -1,8 +1,6 @@
 package com.stclaircollege.rnb.hikingapp.Fragment;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -41,17 +39,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AddTripFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AddTripFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AddTripFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private OnFragmentInteractionListener mListener;
     private TextView text_start_date;
     private TextView text_end_date;
@@ -62,7 +50,7 @@ public class AddTripFragment extends Fragment {
     private EditText edit_accommodations;
     private EditText edit_hike_name;
     private HashtagView hashtags;
-    //Creating an arraylist for list of organizer and participants
+
     List<String> list_members = new ArrayList<>();
     List<String> list_participants = new ArrayList<>();
     List<String> list_temp = new ArrayList<>();
@@ -72,12 +60,9 @@ public class AddTripFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //initialzing arraylists
         this.list_members = new ArrayList<>();
         this.list_participants = new ArrayList<>();
     }
@@ -85,18 +70,17 @@ public class AddTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_trip_content, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_trip, container, false);
+        bindView(view);
         return view;
     }
+
     void bindView(View view) {
-        //implementing google places autocomplete
-        SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment)getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
             }
-
             @Override
             public void onError(Status status) {
             }
@@ -105,7 +89,7 @@ public class AddTripFragment extends Fragment {
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
                 .build();
         autocompleteFragment.setFilter(typeFilter);
-        //datepicker for stardate and enddate
+
         text_start_date = view.findViewById(R.id.text_start_date);
         text_start_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +124,6 @@ public class AddTripFragment extends Fragment {
                         .show();
             }
         });
-        //spinner for trip organizer and let you input whos the trip organizer and select from the spinner list
         spinner_trip_organizer = view.findViewById(R.id.spinner_trip_organizer);
         btn_trip_organizer = view.findViewById(R.id.btn_trip_organizer);
         btn_trip_organizer.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +146,6 @@ public class AddTripFragment extends Fragment {
                         }).show();
             }
         });
-        //button to add and select participants
         btn_participants = view.findViewById(R.id.btn_participants);
         btn_participants.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,9 +190,8 @@ public class AddTripFragment extends Fragment {
         edit_accommodations = view.findViewById(R.id.edit_accommodations);
         edit_hike_name = view.findViewById(R.id.edit_hike_name);
         hashtags = view.findViewById(R.id.hashtags);
-
     }
-//function to customize the inputed data
+
     private void setHashTagData() {
         hashtags.setData(list_participants, new HashtagView.DataTransform<String>() {
             @Override
@@ -223,42 +204,8 @@ public class AddTripFragment extends Fragment {
         });
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-}
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onClickCreatTripButton();
+        void onClickClearButton();
     }
 }
