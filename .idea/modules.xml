@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HikingApp.iml" filepath="$PROJECT_DIR$/HikingApp.iml" />
       <module fileurl="file://C:\Users\Blaze\Desktop\project\HikingApp\HikingApp.iml" filepath="C:\Users\Blaze\Desktop\project\HikingApp\HikingApp.iml" />
+      <module fileurl="file://C:\Users\Blaze\Desktop\HikingApp\HikingApp.iml" filepath="C:\Users\Blaze\Desktop\HikingApp\HikingApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Blaze\Desktop\HikingApp\app\app.iml" filepath="C:\Users\Blaze\Desktop\HikingApp\app\app.iml" />
       <module fileurl="file://C:\Users\Blaze\Desktop\project\HikingApp\app\app.iml" filepath="C:\Users\Blaze\Desktop\project\HikingApp\app\app.iml" />
     </modules>
   </component>
