@@ -2,11 +2,8 @@ package com.stclaircollege.rnb.hikingapp;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.stclaircollege.rnb.hikingapp.Fragment.AddTripFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.MainFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.PastHikeFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.SummaryFragment;
 //import android.support.v4.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity

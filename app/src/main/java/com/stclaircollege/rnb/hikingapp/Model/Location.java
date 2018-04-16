@@ -12,13 +12,8 @@ public class Location {
     private int type;
     private String phoneNumber;
 
-
-
     public Location(){
-
     }
-
-
 
     public Location(int id, String location, String city, String country, int type, String phoneNumber){
         this.id = id;
