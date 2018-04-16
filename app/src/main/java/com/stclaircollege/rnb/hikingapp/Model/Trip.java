@@ -11,7 +11,7 @@ public class Trip {
     public String endDate;
     public int tripOrganizer;
     public String participants;
-    public int noOfDays;
+    public String noOfDays;
     public String accommodations;
     public String hikes;
     public String reminders;
@@ -25,7 +25,7 @@ public class Trip {
         endDate = "";
         tripOrganizer = 0;
         participants = "";
-        noOfDays = 0;
+        noOfDays = "";
         accommodations = "";
         hikes = "";
         reminders = "";

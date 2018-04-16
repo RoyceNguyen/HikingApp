@@ -14,24 +14,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.stclaircollege.rnb.hikingapp.Fragment.AddTripFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.EditTripFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.MainFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.PastHikeFragment;
-import com.stclaircollege.rnb.hikingapp.Fragment.SummaryFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.FutureTripFragment;
+import com.stclaircollege.rnb.hikingapp.Model.Trip;
+import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.OnFragmentInteractionListener,
         PastHikeFragment.OnFragmentInteractionListener,
-        SummaryFragment.OnFragmentInteractionListener,
-        AddTripFragment.OnFragmentInteractionListener {
+        FutureTripFragment.FutureTripListener,
+        AddTripFragment.OnFragmentInteractionListener, EditTripFragment.OnFragmentInteractionListener {
 
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
+
+    private DatabaseHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        handler = new DatabaseHandler(MainActivity.this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -96,13 +104,13 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_summary) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new SummaryFragment());
+            tran.replace(R.id.content_main, new FutureTripFragment(MainActivity.this));
             tran.commit();
 
         } else if (id == R.id.nav_futuretrips) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new SummaryFragment());
+            tran.replace(R.id.content_main, new FutureTripFragment(MainActivity.this));
             tran.commit();
         } else if (id == R.id.nav_contact) {
             FragmentTransaction tran = fm.beginTransaction();
@@ -127,11 +135,27 @@ public class MainActivity extends AppCompatActivity
     public void onClickCreateTripButton() {
         FragmentTransaction tran = fm.beginTransaction();
         tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        tran.replace(R.id.content_main, new SummaryFragment());
+        tran.replace(R.id.content_main, new FutureTripFragment(MainActivity.this));
         tran.commit();
     }
 
     @Override
     public void onClickClearButton() {
+    }
+
+    @Override
+    public void onClickEditTrip(int trip_id) {
+        Trip trip = handler.getTrip(trip_id);
+        if (trip != null) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new EditTripFragment(MainActivity.this, trip));
+            tran.commit();
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

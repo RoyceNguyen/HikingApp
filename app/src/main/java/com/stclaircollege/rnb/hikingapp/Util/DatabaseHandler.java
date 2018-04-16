@@ -89,7 +89,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
             COLUMN_ENDDATE + " TEXT, " +
             COLUMN_ORGANIZER + " INTEGER, " +
             COLUMN_PARTICIPANTS + " TEXT, " +
-            COLUMN_NOOFDAYS + " INTEGER, " +
+            COLUMN_NOOFDAYS + " TEXT, " +
             COLUMN_ACCOMMODATIONS + " TEXT, " +
             COLUMN_HIKES + " TEXT, " +
             COLUMN_REMINDER + " TEXT, " +
@@ -216,7 +216,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
         trip.endDate = cursor.getString(3);
         trip.tripOrganizer = cursor.getInt(4);
         trip.participants = cursor.getString(5);
-        trip.noOfDays = cursor.getInt(6);
+        trip.noOfDays = cursor.getString(6);
         trip.accommodations = cursor.getString(7);
         trip.hikes = cursor.getString(8);
         trip.reminders = cursor.getString(9);
@@ -241,7 +241,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
                 trip.endDate = cursor.getString(3);
                 trip.tripOrganizer = cursor.getInt(4);
                 trip.participants = cursor.getString(5);
-                trip.noOfDays = cursor.getInt(6);
+                trip.noOfDays = cursor.getString(6);
                 trip.accommodations = cursor.getString(7);
                 trip.hikes = cursor.getString(8);
                 trip.reminders = cursor.getString(9);

@@ -333,25 +333,25 @@
             android:gravity="center"
             android:padding="@dimen/padding_addTrip">
             <Button
-                android:id="@+id/btn_create_trip"
+                android:id="@+id/btn_complete_trip"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/endDate"
                 android:layout_marginRight="10dp"
                 android:background="@color/colorPrimary"
-                android:text="Create Trip"
+                android:text="Complete Trip"
                 android:textAllCaps="false"
                 android:textColor="@color/textAndIcons"
                 android:textSize="20dp" />
             <Button
-                android:id="@+id/btn_clear"
+                android:id="@+id/btn_update_trip"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/endDate"
                 android:background="@color/colorPrimary"
-                android:text="Clear"
+                android:text="Update Trip"
                 android:textAllCaps="false"
                 android:textColor="@color/textAndIcons"
                 android:textSize="20dp" />
