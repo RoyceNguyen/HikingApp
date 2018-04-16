@@ -25,8 +25,8 @@
     <string name="kilometers_summary">Kilometers:</string>
     <string name="miles_summary">Miles:</string>
     <string name="numOfDayHikes_summary">No. of Day Hikes:</string>
-    <string name="numOfDBagNights_summary">No. of Day Hikes:</string>
     <string name="bagHikes">Bag Hikes:</string>
+    <string name="bagNights">No. of Bag Nights:</string>
     <string name="distance">Distance:</string>
     <string name="contactInfo">Contact Info:</string>
     <string name="reminders">Reminders:</string>
@@ -34,5 +34,6 @@
     <string name="highlights">Highlights:</string>
     <string name="title_mainscreen">Hiking Itinerary</string>
     <string name="title_pastHike">Completed Hikes</string>
+    <string name="title_future_trips">Future Trips</string>
 
 </resources>
