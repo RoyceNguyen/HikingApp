@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.stclaircollege.rnb.hikingapp.SummaryFragment">
+    tools:context="com.stclaircollege.rnb.hikingapp.Fragment.SummaryFragment">
 
     <TextView
         android:id="@+id/summaryTitle"
