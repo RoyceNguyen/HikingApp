@@ -17,15 +17,13 @@ import com.stclaircollege.rnb.hikingapp.Fragment.AddTripFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.MainFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.PastHikeFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.SummaryFragment;
-//import android.support.v4.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        //adding all the interaction listeners
         MainFragment.OnFragmentInteractionListener,
         PastHikeFragment.OnFragmentInteractionListener,
         SummaryFragment.OnFragmentInteractionListener,
-        AddTripFragment.OnFragmentInteractionListener{
+        AddTripFragment.OnFragmentInteractionListener {
 
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -58,23 +56,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -93,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_addtrip) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new AddTripFragment());
+            tran.replace(R.id.content_main, new AddTripFragment(this));
             tran.commit();
 
         } else if (id == R.id.nav_pasthikes) {
@@ -113,7 +104,6 @@ public class MainActivity extends AppCompatActivity
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new SummaryFragment());
             tran.commit();
-
         } else if (id == R.id.nav_contact) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
@@ -125,23 +115,23 @@ public class MainActivity extends AppCompatActivity
             tran.commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     public void onFragmentInteraction(Uri uri){
-
     }
 
     @Override
-    public void onClickCreatTripButton() {
-
+    public void onClickCreateTripButton() {
+        FragmentTransaction tran = fm.beginTransaction();
+        tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+        tran.replace(R.id.content_main, new SummaryFragment());
+        tran.commit();
     }
 
     @Override
     public void onClickClearButton() {
-
     }
-
 }
