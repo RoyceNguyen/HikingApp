@@ -1,6 +1,6 @@
 package com.stclaircollege.rnb.hikingapp.Fragment;
 
-import android.graphics.Color;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,66 +8,69 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.SuperscriptSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.greenfrvr.hashtagview.HashtagView;
 import com.stclaircollege.rnb.hikingapp.Adapter.HikeAdapter;
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
+import com.stclaircollege.rnb.hikingapp.Model.Participant;
+import com.stclaircollege.rnb.hikingapp.Model.Trip;
 import com.stclaircollege.rnb.hikingapp.R;
+import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
 import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
 import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-public class AddTripFragment extends Fragment {
+public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeListener {
     private OnFragmentInteractionListener mListener;
     private TextView text_start_date;
     private TextView text_end_date;
     private Spinner spinner_trip_organizer;
-    private Button btn_trip_organizer;
-    private Button btn_participants;
     private EditText edit_number_of_days;
     private EditText edit_accommodations;
-    private EditText edit_hike_name;
+    private EditText edit_reminders;
+    private EditText edit_wildlife_seen;
+    private EditText edit_highlights;
     private HashtagView hashtags;
+
+    private String location;
 
     private RecyclerView recyclerView;
     private List<Hike>list_hikes = new ArrayList<>();
     private HikeAdapter adapter;
 
-    List<String> list_members = new ArrayList<>();
-    List<String> list_participants = new ArrayList<>();
-    List<String> list_temp = new ArrayList<>();
-    this.list_hikes = new ArrayList<>();
-    this.list_hikes.add(new Hike());
+    private DatabaseHandler handler;
 
+    List<Participant> list_members = new ArrayList<>();
+    List<String> list_participants = new ArrayList<>();
+    List<Integer> list_ids = new ArrayList<>();
+    private SupportPlaceAutocompleteFragment autocompleteFragment;
 
     public AddTripFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressLint("ValidFragment")
+    public AddTripFragment(OnFragmentInteractionListener listener) {
+        mListener = listener;
     }
 
     @Override
@@ -75,6 +78,10 @@ public class AddTripFragment extends Fragment {
         super.onCreate(savedInstanceState);
         this.list_members = new ArrayList<>();
         this.list_participants = new ArrayList<>();
+        this.list_hikes = new ArrayList<>();
+        this.list_hikes.add(new Hike());
+        location = "";
+        handler = new DatabaseHandler(getContext());
     }
 
     @Override
@@ -88,16 +95,18 @@ public class AddTripFragment extends Fragment {
 
     void setRecyclerView() {
         adapter = new HikeAdapter(getContext(), list_hikes);
+        adapter.setEventListener(AddTripFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         recyclerView.setNestedScrollingEnabled(false);
     }
 
     void bindView(View view) {
-        SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment)getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment = (SupportPlaceAutocompleteFragment)getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
+                location = place.getAddress().toString();
             }
             @Override
             public void onError(Status status) {
@@ -143,8 +152,8 @@ public class AddTripFragment extends Fragment {
             }
         });
         spinner_trip_organizer = view.findViewById(R.id.spinner_trip_organizer);
-        btn_trip_organizer = view.findViewById(R.id.btn_trip_organizer);
-        btn_trip_organizer.setOnClickListener(new View.OnClickListener() {
+        setSpinner();
+        view.findViewById(R.id.btn_trip_organizer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new MaterialDialog.Builder(getContext())
@@ -154,31 +163,33 @@ public class AddTripFragment extends Fragment {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 if  (input.toString().trim().length()==0) return;
-                                list_members.add(input.toString());
-                                String[] array = new String[list_members.size()];
-                                list_members.toArray(array);
-                                ArrayAdapter<String> adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, array);
-                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                spinner_trip_organizer.setAdapter(adapter);
+                                Participant participant = new Participant();
+                                participant.name = input.toString();
+                                handler.addParticipant(participant);
+                                setSpinner();
                             }
                         }).show();
             }
         });
-        btn_participants = view.findViewById(R.id.btn_participants);
-        btn_participants.setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btn_participants).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final List<String> names = new ArrayList<>();
+                final List<Integer> ids = new ArrayList<>();
+                for (Participant participant : list_members) {
+                    names.add(participant.name);
+                }
                 new MaterialDialog.Builder(getContext())
                         .title("Select participants")
-                        .items(list_members)
+                        .items(names)
                         .itemsCallbackMultiChoice(
                                 null,
                                 new MaterialDialog.ListCallbackMultiChoice() {
                                     @Override
                                     public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-                                        list_temp.clear();
+                                        ids.clear();
                                         for (int i = 0; i < which.length; i++) {
-                                            list_temp.add(list_members.get(which[i]));
+                                            ids.add(which[i]);
                                         }
                                         return true;
                                     }
@@ -186,7 +197,9 @@ public class AddTripFragment extends Fragment {
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                list_participants = list_temp;
+                                list_participants.clear();
+                                for (Integer id : ids) list_participants.add(names.get(id));
+                                list_ids = ids;
                                 setHashTagData();
                                 dialog.dismiss();
                             }
@@ -206,9 +219,7 @@ public class AddTripFragment extends Fragment {
         });
         edit_number_of_days = view.findViewById(R.id.edit_number_of_days);
         edit_accommodations = view.findViewById(R.id.edit_accommodations);
-        edit_hike_name = view.findViewById(R.id.edit_hike_name);
         hashtags = view.findViewById(R.id.hashtags);
-
         view.findViewById(R.id.btn_add_hike).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,6 +236,109 @@ public class AddTripFragment extends Fragment {
                 }
             }
         });
+        edit_reminders = view.findViewById(R.id.edit_reminders);
+        edit_wildlife_seen = view.findViewById(R.id.edit_wildlife_seen);
+        edit_highlights = view.findViewById(R.id.edit_highlights);
+        view.findViewById(R.id.btn_create_trip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickCreateTrip();
+            }
+        });
+        view.findViewById(R.id.btn_clear).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickClear();
+            }
+        });
+    }
+
+    private void onClickClear() {
+        autocompleteFragment.setText("");
+        location = "";
+        text_start_date.setText("");
+        text_end_date.setText("");
+        spinner_trip_organizer.setSelection(0);
+        list_participants.clear();
+        list_ids.clear();
+        setHashTagData();
+        edit_number_of_days.setText("");
+        edit_accommodations.setText("");
+        list_hikes.clear();
+        list_hikes.add(new Hike());
+        setRecyclerView();
+        edit_reminders.setText("");
+        edit_wildlife_seen.setText("");
+        edit_highlights.setText("");
+    }
+
+    private void onClickCreateTrip() {
+        if (location.isEmpty()) {
+            Toast.makeText(getContext(), "Please select location", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (text_start_date.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Please input start date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (list_members.size() == 0) {
+            Toast.makeText(getContext(), "Please select Trip Organizer", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (edit_number_of_days.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Please input number of days", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String participant_ids = "";
+        for (Integer id : list_ids) {
+            if (!participant_ids.equals("")) participant_ids = participant_ids + ",";
+            participant_ids = participant_ids + id;
+        }
+        String hike_ids = "";
+        for (Hike hike : list_hikes) {
+            int id = handler.addHike(hike);
+            if (id == -1) {
+                Toast.makeText(getContext(), "Database error", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (!hike_ids.equals("")) hike_ids = hike_ids + ",";
+            hike_ids = hike_ids + id;
+        }
+
+        Trip trip = new Trip();
+        trip.location = location;
+        trip.startDate = text_start_date.getText().toString();
+        trip.endDate = text_end_date.getText().toString();
+        trip.tripOrganizer = list_members.get(spinner_trip_organizer.getSelectedItemPosition()).id;
+        trip.participants = participant_ids;
+        trip.noOfDays = Integer.parseInt(edit_number_of_days.getText().toString());
+        trip.accommodations = edit_accommodations.getText().toString();
+        trip.hikes = hike_ids;
+        trip.reminders = edit_reminders.getText().toString();
+        trip.wildlifeSeen = edit_wildlife_seen.getText().toString();
+        trip.highlights = edit_highlights.getText().toString();
+
+        int id = handler.addTrip(trip);
+        if (id == -1) {
+            Toast.makeText(getContext(), "Database error", Toast.LENGTH_SHORT).show();
+        } else {
+            onClickClear();
+            if (mListener != null) mListener.onClickCreateTripButton();
+        }
+    }
+
+    private void setSpinner() {
+        list_members = handler.getAllParticipant();
+        List<String> names = new ArrayList<>();
+        for (Participant participant : list_members) {
+            names.add(participant.name);
+        }
+        String[] array = new String[list_members.size()];
+        names.toArray(array);
+        ArrayAdapter<String> adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, array);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_trip_organizer.setAdapter(adapter);
+        spinner_trip_organizer.setSelection(0);
     }
 
     private void setHashTagData() {
@@ -232,15 +346,50 @@ public class AddTripFragment extends Fragment {
             @Override
             public CharSequence prepare(String item) {
                 SpannableString spannableString = new SpannableString(item);
-                spannableString.setSpan(new SuperscriptSpan(), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#efeef2")), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 return spannableString;
             }
         });
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+    }
+
+    @Override
+    public void onEditTextChanged(int position, int index, String s) {
+        switch (index) {
+            case 0:
+                list_hikes.get(position).hikeName = s;
+                break;
+            case 1:
+                if (s.length() > 0) list_hikes.get(position).noOfDayHikes = Integer.parseInt(s);
+                else list_hikes.get(position).noOfDayHikes = 0;
+                break;
+            case 2:
+                if (s.length() > 0) list_hikes.get(position).noOfBagNights = Integer.parseInt(s);
+                else list_hikes.get(position).noOfBagNights = 0;
+                break;
+            case 3:
+                if (s.length() > 0) list_hikes.get(position).distance = Float.parseFloat(s);
+                else list_hikes.get(position).distance = 0;
+                break;
+            case 4:
+                list_hikes.get(position).contactInfo = s;
+                break;
+            case 5:
+                list_hikes.get(position).dailyBreakdown = s;
+                break;
+        }
+    }
+
+    @Override
+    public void onUnitSwitchChanged(int position, boolean isChecked) {
+        if (isChecked) list_hikes.get(position).unit = 1;
+        else list_hikes.get(position).unit = 0;
+    }
+
     public interface OnFragmentInteractionListener {
-        void onClickCreatTripButton();
+        void onClickCreateTripButton();
         void onClickClearButton();
     }
 }
