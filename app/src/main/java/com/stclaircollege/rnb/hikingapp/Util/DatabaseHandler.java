@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 
-import com.stclaircollege.rnb.hikingapp.LocationHike;
+import com.stclaircollege.rnb.hikingapp.Model.LocationHike;
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.Model.Location;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;

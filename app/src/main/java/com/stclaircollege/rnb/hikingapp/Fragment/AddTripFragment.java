@@ -126,7 +126,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
                         .callback(new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                text_start_date.setText(String.format("%4d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
+                                text_start_date.setText(String.format("%02d/%02d/%4d", dayOfMonth, monthOfYear + 1, year));
                             }
                         })
                         .defaultDate(Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.MONTH),Calendar.getInstance().get(Calendar.DATE))
@@ -143,7 +143,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
                         .callback(new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                text_end_date.setText(String.format("%4d-%02d-%02d", year, monthOfYear + 1, dayOfMonth));
+                                text_end_date.setText(String.format("%02d/%02d/%4d", dayOfMonth, monthOfYear + 1, year));
                             }
                         })
                         .defaultDate(Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.MONTH),Calendar.getInstance().get(Calendar.DATE))
@@ -311,7 +311,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
         trip.endDate = text_end_date.getText().toString();
         trip.tripOrganizer = list_members.get(spinner_trip_organizer.getSelectedItemPosition()).id;
         trip.participants = participant_ids;
-        trip.noOfDays = Integer.parseInt(edit_number_of_days.getText().toString());
+        trip.noOfDays = edit_number_of_days.getText().toString();
         trip.accommodations = edit_accommodations.getText().toString();
         trip.hikes = hike_ids;
         trip.reminders = edit_reminders.getText().toString();
