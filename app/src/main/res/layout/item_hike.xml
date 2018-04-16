@@ -44,6 +44,7 @@
             android:textSize="@dimen/textSize" />
 
         <EditText
+            android:id="@+id/edit_number_of_day_hikes"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/main_edittext"
@@ -59,19 +60,20 @@
         android:padding="@dimen/padding_addTrip">
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:gravity="left|center"
             android:padding="@dimen/padding_addTrip"
-            android:text="@string/bagHikes"
+            android:text="@string/bagNights"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
 
         <EditText
+            android:id="@+id/edit_number_of_bag_nights"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/main_edittext"
-            android:inputType="text"
+            android:inputType="number"
             android:padding="@dimen/padding_addTrip"
             android:text="" />
     </LinearLayout>
@@ -92,6 +94,7 @@
             android:textSize="@dimen/textSize" />
 
         <EditText
+            android:id="@+id/edit_distance"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="30dp"
@@ -121,6 +124,7 @@
             android:textSize="@dimen/textSize" />
 
         <EditText
+            android:id="@+id/edit_contact_info"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/main_edittext"
@@ -142,6 +146,7 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/textSize" />
         <EditText
+            android:id="@+id/edit_daily_breakdown"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@drawable/main_edittext"
