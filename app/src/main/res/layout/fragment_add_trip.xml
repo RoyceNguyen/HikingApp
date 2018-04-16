@@ -130,7 +130,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="40dp"
             android:gravity="center_vertical"
             android:padding="@dimen/padding_addTrip">
 
@@ -146,6 +145,7 @@
                 android:id="@+id/spinner_participants"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:minHeight="30dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/main_edittext" >
@@ -275,6 +275,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/textSize" />
             <EditText
+                android:id="@+id/edit_reminders"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/main_edittext"
@@ -296,6 +297,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/textSize" />
             <EditText
+                android:id="@+id/edit_wildlife_seen"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/main_edittext"
@@ -317,6 +319,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/textSize" />
             <EditText
+                android:id="@+id/edit_highlights"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@drawable/main_edittext"
@@ -330,6 +333,7 @@
             android:gravity="center"
             android:padding="@dimen/padding_addTrip">
             <Button
+                android:id="@+id/btn_create_trip"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
@@ -341,6 +345,7 @@
                 android:textColor="@color/textAndIcons"
                 android:textSize="20dp" />
             <Button
+                android:id="@+id/btn_clear"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
