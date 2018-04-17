@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class CompletedTripAdapter extends RecyclerView.Adapter<CompletedTripAdapter.ViewHolder> {
     private Context context;
     private LayoutInflater mInflater;
@@ -41,6 +42,13 @@ public class CompletedTripAdapter extends RecyclerView.Adapter<CompletedTripAdap
         holder.text_trip_location.setText(listData.get(position).location);
         holder.text_trip_statdate.setText(listData.get(position).startDate);
         holder.text_trip_enddate.setText(listData.get(position).endDate);
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (mListener != null) mListener.onItemLongClick(v, position);
+                return true;
+            }
+        });
     }
 
     // total number of rows
@@ -76,5 +84,6 @@ public class CompletedTripAdapter extends RecyclerView.Adapter<CompletedTripAdap
     // parent activity will implement this method to respond to click events
     public interface ItemTripListener {
         void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
     }
 }

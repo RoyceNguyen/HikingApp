@@ -41,6 +41,13 @@ public class FutureTripAdapter extends RecyclerView.Adapter<FutureTripAdapter.Vi
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.text_trip_location.setText(listData.get(position).location);
         holder.text_trip_statdate.setText(listData.get(position).startDate);
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (mListener != null) mListener.onItemLongClick(v, position);
+                return true;
+            }
+        });
     }
 
     // total number of rows
@@ -74,5 +81,6 @@ public class FutureTripAdapter extends RecyclerView.Adapter<FutureTripAdapter.Vi
     // parent activity will implement this method to respond to click events
     public interface ItemTripListener {
         void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
     }
 }

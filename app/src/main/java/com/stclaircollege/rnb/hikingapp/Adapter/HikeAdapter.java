@@ -11,11 +11,11 @@ import android.widget.EditText;
 
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.R;
+import com.stclaircollege.rnb.hikingapp.Util.Constants;
 import com.suke.widget.SwitchButton;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
     private Context context;
@@ -146,6 +146,12 @@ public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
         holder.switch_unit.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(SwitchButton view, boolean isChecked) {
+                if (isChecked ==  true) {
+                    listData.get(position).distance = listData.get(position).distance * Constants.KiloVsMile;
+                } else {
+                    listData.get(position).distance = listData.get(position).distance / Constants.KiloVsMile;
+                }
+                holder.edit_distance.setText("" + listData.get(position).distance);
                 if (mListener != null) mListener.onUnitSwitchChanged(position, isChecked);
             }
         });
