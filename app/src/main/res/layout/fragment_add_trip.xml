@@ -253,6 +253,7 @@
 
             <Button
                 android:id="@+id/btn_remove_hike"
+
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
@@ -359,3 +360,4 @@
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView >
+
