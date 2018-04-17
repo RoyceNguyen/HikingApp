@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_trip_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="Killarney Park"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize"/>
+            <TextView
+                android:id="@+id/text_trip_statdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="November 12th 2016"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c4c4c4"
+        android:layout_marginHorizontal="10dp"/>
+</LinearLayout>
