@@ -2,6 +2,7 @@ package com.stclaircollege.rnb.hikingapp.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.stclaircollege.rnb.hikingapp.Adapter.CompletedTripAdapter;
 import com.stclaircollege.rnb.hikingapp.Adapter.FutureTripAdapter;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
@@ -63,6 +66,23 @@ public class CompletedTripFragment extends Fragment implements CompletedTripAdap
         if (mListener != null) {
             mListener.onClickEditCompletedTrip(list_trips.get(position).id);
         }
+    }
+
+    @Override
+    public void onItemLongClick(View view, final int position) {
+        new MaterialDialog.Builder(getContext())
+                .content("Do you want to delete this trip?")
+                .positiveText("Yes")
+                .negativeText("No")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        handler.deleteTrip(list_trips.get(position).id);
+                        list_trips.remove(position);
+                        adapter.notifyDataSetChanged();
+                    }
+                })
+                .show();
     }
 
     public interface CompletedTripListener {

@@ -1,6 +1,8 @@
 package com.stclaircollege.rnb.hikingapp.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -196,47 +198,7 @@ public class EditCompletedTripFragment extends Fragment implements HikeAdapter.I
         view.findViewById(R.id.btn_participants).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final List<String> names = new ArrayList<>();
-                final List<Integer> ids = new ArrayList<>();
-                for (Participant participant : list_members) {
-                    names.add(participant.name);
-                }
-                new MaterialDialog.Builder(getContext())
-                        .title("Select participants")
-                        .items(names)
-                        .itemsCallbackMultiChoice(
-                                null,
-                                new MaterialDialog.ListCallbackMultiChoice() {
-                                    @Override
-                                    public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-                                        ids.clear();
-                                        for (int i = 0; i < which.length; i++) {
-                                            ids.add(which[i]);
-                                        }
-                                        return true;
-                                    }
-                                })
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                list_participants.clear();
-                                for (Integer id : ids) list_participants.add(names.get(id));
-                                list_ids = ids;
-                                setHashTagData();
-                                dialog.dismiss();
-                            }
-                        })
-                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .alwaysCallMultiChoiceCallback()
-                        .autoDismiss(false)
-                        .positiveText("Add")
-                        .neutralText("Cancel")
-                        .show();
+                onSelectParticipants();
             }
         });
 
@@ -282,6 +244,101 @@ public class EditCompletedTripFragment extends Fragment implements HikeAdapter.I
                 onClickCancel();
             }
         });
+        view.findViewById(R.id.btn_share_trip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickShare();
+            }
+        });
+    }
+
+    private void onClickShare() {
+        String content = "Location: " + trip.location + "\n" +
+                "Start date: " + trip.startDate + "\n" +
+                "End date: " + trip.endDate + "\n" +
+                "No. Of days: " + trip.noOfDays + "\n" +
+                "Accommodations: " + trip.accommodations + "\n" +
+                "Reminders: " + trip.reminders + "\n" +
+                "Wildlife Seen: " + trip.wildlifeSeen + "\n" +
+                "Highlights: " + trip.highlights;
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Trip");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, content);
+        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+    }
+
+    private void onSelectParticipants() {
+        final List<String> names = new ArrayList<>();
+        final List<Integer> ids = new ArrayList<>();
+        for (Participant participant : list_members) {
+            names.add(participant.name);
+        }
+        new MaterialDialog.Builder(getContext())
+                .title("Select participants")
+                .items(names)
+                .itemsCallbackMultiChoice(
+                        null,
+                        new MaterialDialog.ListCallbackMultiChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                                ids.clear();
+                                for (int i = 0; i < which.length; i++) {
+                                    ids.add(which[i]);
+                                }
+                                return true;
+                            }
+                        })
+                .positiveText("Ok")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        list_participants.clear();
+                        for (Integer id : ids) list_participants.add(names.get(id));
+                        list_ids = ids;
+                        dialog.dismiss();
+                        setHashTagData();
+                    }
+                })
+                .negativeText("Add")
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        final MaterialDialog parent = dialog;
+                        new MaterialDialog.Builder(getContext())
+                                .content("Input trip organizer")
+                                .inputType(InputType.TYPE_CLASS_TEXT)
+                                .input("", "", new MaterialDialog.InputCallback() {
+                                    @Override
+                                    public void onInput(MaterialDialog dialog, CharSequence input) {
+                                        if  (input.toString().trim().length()==0) return;
+                                        Participant participant = new Participant();
+                                        participant.name = input.toString();
+                                        handler.addParticipant(participant);
+                                        dialog.dismiss();
+                                        parent.dismiss();
+                                        setSpinner();
+                                        onSelectParticipants();
+                                    }
+                                }).show();
+                    }
+                })
+                .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        for (Integer id : ids) {
+                            handler.deleteParticipant(list_members.get(id).id);
+                            list_members.remove(id);
+                        }
+                        dialog.dismiss();
+                        setSpinner();
+                        onSelectParticipants();
+                    }
+                })
+                .alwaysCallMultiChoiceCallback()
+                .autoDismiss(false)
+                .neutralText("Delete")
+                .show();
     }
 
     private void onClickCancel() {
