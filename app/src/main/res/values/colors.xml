@@ -8,4 +8,8 @@
     <color name="secondaryText">#757575</color>
     <color name="lightPrimaryColor">#D7CCC8</color>
     <color name="primaryTextColor">#212121</color>
+
+    <!-- Dark theme colors -->
+    <color name="colorPrimary2">#696969</color>
+    <color name="colorPrimary3">#000000</color>
 </resources>

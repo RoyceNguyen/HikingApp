@@ -4,9 +4,20 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static com.stclaircollege.rnb.hikingapp.MainActivity.fab;
 
 
 /**
@@ -26,6 +37,8 @@ public class PastHikeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ListView list;
 
     private OnFragmentInteractionListener mListener;
 
@@ -60,11 +73,114 @@ public class PastHikeFragment extends Fragment {
         }
     }
 
+    //Creating fragment manager
+    FragmentManager fm;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_past_hike, container, false);
+        View view = inflater.inflate(R.layout.fragment_past_hike, container, false);
+
+        fm = getActivity().getSupportFragmentManager();
+        //Had to add this fab.show in order to create a trip
+        fab.show();
+        fab.setImageResource(R.drawable.ic_add_box_black_24dp);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.addToBackStack(null);
+                ft.replace(R.id.content_main, new AddTripFragment());
+                ft.commit();
+            }
+        });
+
+        list = view.findViewById(R.id.tripslist);
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        final ArrayList<Trip> tripslist = db.getAllTrips();
+        db.closeDB();
+
+        //create custom adapter
+        final CustomAdapter adapter = new CustomAdapter(getContext(), tripslist);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView location = view.findViewById(R.id.locationListView);
+                TextView startDate = view.findViewById(R.id.startDateListView);
+
+                //TextView details = (TextView) view.findViewById(R.id.details);
+                //ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
+
+                //open a database connection here
+                DatabaseHandler db = new DatabaseHandler(getContext());
+
+                Trip loc = db.getTrip(tripslist.get(position).getLocation());
+                Trip date = db.getTrip(tripslist.get(position).getLocation());
+                db.closeDB();
+
+                //update the text of build
+                if(location.getText() == "" || startDate.getText() == "" ) {
+                    location.setText(loc.getLocation());
+                    startDate.setText(date.getStartDate());
+                    //update the text of the show more
+                    //details.setText("Click to show less");
+                    //update the chevron image
+                    //chevron.setImageResource(R.drawable.ic_expand_less_black_24dp);
+                }
+                else{
+                    location.setText("");
+                    startDate.setText("");
+                    //details.setText("Click to show more");
+                    //update the chevron image
+                    //chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
+                }
+
+            }
+        });
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                Trip trip = tripslist.get(position);
+                db.deleteTrip(trip.getId());
+                db.closeDB();
+                tripslist.remove(position);
+                adapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+
+        return view;
+    }
+
+    public class CustomAdapter extends ArrayAdapter<Trip> {
+
+        public CustomAdapter(Context context, ArrayList<Trip> items) {
+            super(context, 0, items);
+        }
+
+        /**
+         * getView is used to take every item in a list
+         * and assign a view to it.
+         * With this specific adapter we specified item_view as the view
+         * we want every item in a list to look like.
+         * After that item has item_view attached to it
+         * we populate the item_view's name TextView
+         */
+        public View getView(int position, View convertView, ViewGroup parent){
+            final Trip item = getItem(position);
+            if(convertView == null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
+            }
+
+            TextView name = convertView.findViewById(R.id.name);
+            name.setText(item.getLocation());
+
+            return convertView;
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

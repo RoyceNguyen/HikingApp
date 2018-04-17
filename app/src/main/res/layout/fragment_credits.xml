@@ -43,7 +43,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView5"
         android:padding="@dimen/padding_addTrip"
-        android:text="Layout"
+        android:text="Designed the app from colour choices and layout for each fragment too our home page and nav drawer. Created Credits and Contact Us fragments. "
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
@@ -67,7 +67,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView7"
         android:padding="@dimen/padding_addTrip"
-        android:text="Database"
+        android:text="Created the database used for the app, implemented our Google Places API to work within our AddTrip fragment."
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 

@@ -1,11 +1,15 @@
 package com.stclaircollege.rnb.hikingapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +19,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.TextView;
 //import android.support.v4.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity
@@ -29,6 +35,12 @@ public class MainActivity extends AppCompatActivity
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
     public static FloatingActionButton fab;
+    public static final String TAG = "THEMES";
+    private boolean isLight;
+    private boolean isChecked;
+    private TextView tv;
+    private int currentTheme;
+    private int oldTheme;
 
 
     @Override
@@ -36,10 +48,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isChecked = sharedPref.getBoolean("caps_pref", false);
+        String lister = sharedPref.getString("list_preference", "1");
+        oldTheme = Integer.parseInt(lister);
+
+        // Following options to change the Theme must precede setContentView().
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        toggleTheme();
+        setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,19 +78,19 @@ public class MainActivity extends AppCompatActivity
             tran.commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -83,6 +106,57 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+        Log.i(TAG, "onResume()");
+        toggleTheme();
+    }
+
+    // Method to check SharedPreferences and set the current theme
+    private void toggleTheme(){
+
+        // Following options to change the Theme must precede setContentView().
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isChecked = sharedPref.getBoolean("caps_pref", false);
+        String lister = sharedPref.getString("list_preference", "1");
+        String myName = sharedPref.getString("edittext_preference", "");
+
+        currentTheme = Integer.parseInt(lister);
+        if(currentTheme == 2){
+            isLight = false;
+        } else {
+            isLight = true;
+        }
+
+
+        if(isLight) {
+            setTheme(R.style.HoloLightCustom);
+        } else {
+            setTheme(R.style.HoloCustom);
+        }
+
+        // If theme has changed, force a restart of MainActivity to get the new theme
+        // to display for it. That this is required may be a known bug in Android.  See
+        //
+        //    https://code.google.com/p/android/issues/detail?id=4394
+        //
+        // for further discussion.
+
+        if(oldTheme != currentTheme){
+
+            oldTheme = currentTheme;
+
+            Intent k = new Intent(this, MainActivity.class);
+
+            // Following flag clears the activity with old theme from the stack so an exit from the
+            // activity with new theme will not take you back to the version with the old theme.
+
+            k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(k);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -91,6 +165,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(i);
             return true;
         }
 
@@ -130,7 +206,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_futuretrips) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new SummaryFragment());
+            tran.replace(R.id.content_main, new PastHikeFragment());
             tran.commit();
 
         } else if (id == R.id.nav_contact) {
@@ -141,11 +217,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_credits) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new CreditsFragment());
             tran.commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
