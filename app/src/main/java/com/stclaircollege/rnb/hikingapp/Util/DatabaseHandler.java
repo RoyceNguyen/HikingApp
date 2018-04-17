@@ -6,11 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 
-import com.stclaircollege.rnb.hikingapp.Model.LocationHike;
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
-import com.stclaircollege.rnb.hikingapp.Model.Location;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
-import com.stclaircollege.rnb.hikingapp.Model.Type;
 import com.stclaircollege.rnb.hikingapp.Model.Participant;
 
 import java.util.ArrayList;
@@ -224,6 +221,66 @@ public class DatabaseHandler extends SQLiteOpenHelper
         trip.highlights = cursor.getString(11);
         trip.status = cursor.getInt(12);
         return trip;
+    }
+
+    public ArrayList<Trip> getFutureTrips() {
+        ArrayList<Trip> tripsList = new ArrayList<Trip>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_TRIP,
+                new String[] { COLUMN_ID, COLUMN_LOCATION, COLUMN_STARTDATE, COLUMN_ENDDATE,COLUMN_ORGANIZER, COLUMN_PARTICIPANTS, COLUMN_NOOFDAYS,COLUMN_ACCOMMODATIONS,
+                        COLUMN_HIKES,COLUMN_REMINDER,COLUMN_WILDLIFE,COLUMN_HIGHLIGHTS,COLUMN_STATUS}, COLUMN_STATUS + "=?",
+                new String[] { String.valueOf(0) }, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Trip trip = new Trip();
+                trip.id = cursor.getInt(0);
+                trip.location = cursor.getString(1);
+                trip.startDate = cursor.getString(2);
+                trip.endDate = cursor.getString(3);
+                trip.tripOrganizer = cursor.getInt(4);
+                trip.participants = cursor.getString(5);
+                trip.noOfDays = cursor.getString(6);
+                trip.accommodations = cursor.getString(7);
+                trip.hikes = cursor.getString(8);
+                trip.reminders = cursor.getString(9);
+                trip.wildlifeSeen = cursor.getString(10);
+                trip.highlights = cursor.getString(11);
+                trip.status = cursor.getInt(12);
+                tripsList.add(trip);
+            } while (cursor.moveToNext());
+        }
+        return tripsList;
+    }
+
+    public ArrayList<Trip> getCompletedTrips() {
+        ArrayList<Trip> tripsList = new ArrayList<Trip>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_TRIP,
+                new String[] { COLUMN_ID, COLUMN_LOCATION, COLUMN_STARTDATE, COLUMN_ENDDATE,COLUMN_ORGANIZER, COLUMN_PARTICIPANTS, COLUMN_NOOFDAYS,COLUMN_ACCOMMODATIONS,
+                        COLUMN_HIKES,COLUMN_REMINDER,COLUMN_WILDLIFE,COLUMN_HIGHLIGHTS,COLUMN_STATUS}, COLUMN_STATUS + "=?",
+                new String[] { String.valueOf(1) }, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Trip trip = new Trip();
+                trip.id = cursor.getInt(0);
+                trip.location = cursor.getString(1);
+                trip.startDate = cursor.getString(2);
+                trip.endDate = cursor.getString(3);
+                trip.tripOrganizer = cursor.getInt(4);
+                trip.participants = cursor.getString(5);
+                trip.noOfDays = cursor.getString(6);
+                trip.accommodations = cursor.getString(7);
+                trip.hikes = cursor.getString(8);
+                trip.reminders = cursor.getString(9);
+                trip.wildlifeSeen = cursor.getString(10);
+                trip.highlights = cursor.getString(11);
+                trip.status = cursor.getInt(12);
+                tripsList.add(trip);
+            } while (cursor.moveToNext());
+        }
+        return tripsList;
     }
 
     public ArrayList<Trip> getAllTrips() {
