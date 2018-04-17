@@ -9,6 +9,7 @@
         android:gravity="center"
         android:padding="@dimen/padding_addTrip"
         android:text="@string/title_future_trips"
+        android:textAllCaps="true"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/titleTextSize"
         android:textStyle="bold" />
