@@ -196,47 +196,7 @@ public class EditFutureTripFragment extends Fragment implements HikeAdapter.Item
         view.findViewById(R.id.btn_participants).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final List<String> names = new ArrayList<>();
-                final List<Integer> ids = new ArrayList<>();
-                for (Participant participant : list_members) {
-                    names.add(participant.name);
-                }
-                new MaterialDialog.Builder(getContext())
-                        .title("Select participants")
-                        .items(names)
-                        .itemsCallbackMultiChoice(
-                                null,
-                                new MaterialDialog.ListCallbackMultiChoice() {
-                                    @Override
-                                    public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-                                        ids.clear();
-                                        for (int i = 0; i < which.length; i++) {
-                                            ids.add(which[i]);
-                                        }
-                                        return true;
-                                    }
-                                })
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                list_participants.clear();
-                                for (Integer id : ids) list_participants.add(names.get(id));
-                                list_ids = ids;
-                                setHashTagData();
-                                dialog.dismiss();
-                            }
-                        })
-                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .alwaysCallMultiChoiceCallback()
-                        .autoDismiss(false)
-                        .positiveText("Add")
-                        .neutralText("Cancel")
-                        .show();
+                onSelectParticipants();
             }
         });
 
@@ -282,6 +242,79 @@ public class EditFutureTripFragment extends Fragment implements HikeAdapter.Item
                 onClickCompleteTrip();
             }
         });
+    }
+
+    private void onSelectParticipants() {
+        final List<String> names = new ArrayList<>();
+        final List<Integer> ids = new ArrayList<>();
+        for (Participant participant : list_members) {
+            names.add(participant.name);
+        }
+        new MaterialDialog.Builder(getContext())
+                .title("Select participants")
+                .items(names)
+                .itemsCallbackMultiChoice(
+                        null,
+                        new MaterialDialog.ListCallbackMultiChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                                ids.clear();
+                                for (int i = 0; i < which.length; i++) {
+                                    ids.add(which[i]);
+                                }
+                                return true;
+                            }
+                        })
+                .positiveText("Ok")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        list_participants.clear();
+                        for (Integer id : ids) list_participants.add(names.get(id));
+                        list_ids = ids;
+                        dialog.dismiss();
+                        setHashTagData();
+                    }
+                })
+                .negativeText("Add")
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        final MaterialDialog parent = dialog;
+                        new MaterialDialog.Builder(getContext())
+                                .content("Input trip organizer")
+                                .inputType(InputType.TYPE_CLASS_TEXT)
+                                .input("", "", new MaterialDialog.InputCallback() {
+                                    @Override
+                                    public void onInput(MaterialDialog dialog, CharSequence input) {
+                                        if  (input.toString().trim().length()==0) return;
+                                        Participant participant = new Participant();
+                                        participant.name = input.toString();
+                                        handler.addParticipant(participant);
+                                        dialog.dismiss();
+                                        parent.dismiss();
+                                        setSpinner();
+                                        onSelectParticipants();
+                                    }
+                                }).show();
+                    }
+                })
+                .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        for (Integer id : ids) {
+                            handler.deleteParticipant(list_members.get(id).id);
+                            list_members.remove(id);
+                        }
+                        dialog.dismiss();
+                        setSpinner();
+                        onSelectParticipants();
+                    }
+                })
+                .alwaysCallMultiChoiceCallback()
+                .autoDismiss(false)
+                .neutralText("Delete")
+                .show();
     }
 
     private void onClickCompleteTrip() {
