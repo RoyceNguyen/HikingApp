@@ -14,19 +14,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.stclaircollege.rnb.hikingapp.Fragment.AddTripFragment;
-import com.stclaircollege.rnb.hikingapp.Fragment.EditTripFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.CompletedTripFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.EditCompletedTripFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.EditFutureTripFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.MainFragment;
-import com.stclaircollege.rnb.hikingapp.Fragment.PastHikeFragment;
 import com.stclaircollege.rnb.hikingapp.Fragment.FutureTripFragment;
+import com.stclaircollege.rnb.hikingapp.Fragment.SummaryFragment;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
 import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.OnFragmentInteractionListener,
-        PastHikeFragment.OnFragmentInteractionListener,
         FutureTripFragment.FutureTripListener,
-        AddTripFragment.OnFragmentInteractionListener, EditTripFragment.OnFragmentInteractionListener {
+        AddTripFragment.AddTripListener,
+        EditFutureTripFragment.EditFutureTripListener,
+        CompletedTripFragment.CompletedTripListener,
+        EditCompletedTripFragment.EditCompletedTripListener,
+        SummaryFragment.SummaryListener {
 
     //Adding FragmentManager
     FragmentManager fm = getSupportFragmentManager();
@@ -92,19 +97,18 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_addtrip) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new AddTripFragment(this));
+            tran.replace(R.id.content_main, new AddTripFragment(MainActivity.this));
             tran.commit();
 
         } else if (id == R.id.nav_pasthikes) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new CompletedTripFragment(MainActivity.this));
             tran.commit();
-
         } else if (id == R.id.nav_summary) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new FutureTripFragment(MainActivity.this));
+            tran.replace(R.id.content_main, new SummaryFragment(MainActivity.this));
             tran.commit();
 
         } else if (id == R.id.nav_futuretrips) {
@@ -115,6 +119,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_contact) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
         } else if (id == R.id.nav_credits) {
             FragmentTransaction tran = fm.beginTransaction();
@@ -140,22 +145,53 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onClickClearButton() {
-    }
-
-    @Override
-    public void onClickEditTrip(int trip_id) {
+    public void onClickEditFutureTrip(int trip_id) {
         Trip trip = handler.getTrip(trip_id);
         if (trip != null) {
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            tran.replace(R.id.content_main, new EditTripFragment(MainActivity.this, trip));
-            tran.commit();
+            tran.replace(R.id.content_main, new EditFutureTripFragment(MainActivity.this, trip));
+            tran.addToBackStack(null).commit();
         }
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    public void onClickUpdateFutureTripButton() {
+        fm.popBackStack();
+    }
+
+    @Override
+    public void onClickCompleteFutureTripButton() {
+        fm.popBackStack();
+        FragmentTransaction tran = fm.beginTransaction();
+        tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+        tran.replace(R.id.content_main, new CompletedTripFragment(MainActivity.this));
+        tran.commit();
+    }
+
+    @Override
+    public void onClickEditCompletedTrip(int trip_id) {
+        Trip trip = handler.getTrip(trip_id);
+        if (trip != null) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            tran.replace(R.id.content_main, new EditCompletedTripFragment(MainActivity.this, trip));
+            tran.addToBackStack(null).commit();
+        }
+    }
+
+    @Override
+    public void onClickUpdateCompletedTripButton() {
+        fm.popBackStack();
+    }
+
+    @Override
+    public void onClickCancelButton() {
+        fm.popBackStack();
     }
 }
