@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.stclaircollege.rnb.hikingapp.PastHikeFragment">
+    tools:context="com.stclaircollege.rnb.hikingapp.Fragment.PastHikeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <!-- Adding listview to past hikes fragments to show all hikes that have been completed -->
@@ -17,6 +17,7 @@
         android:gravity="center"
         android:padding="@dimen/padding_addTrip"
         android:text="@string/title_pastHike"
+        android:textAllCaps="true"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/titleTextSize"
         android:textStyle="bold" />

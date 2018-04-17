@@ -1,173 +1,134 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.stclaircollege.rnb.hikingapp.SummaryFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <!-- Created Summary layout to show a sum of all data for all past hikes -->
-
+    tools:context="com.stclaircollege.rnb.hikingapp.Fragment.FutureTripFragment">
 
     <TextView
         android:id="@+id/summaryTitle"
         android:layout_width="match_parent"
-        android:layout_height="41dp"
+        android:layout_height="70dp"
         android:gravity="center"
         android:text="Summary"
+        android:textAllCaps="true"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/titleTextSize"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/hikesCompletedLabel"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/summaryTitle"
-        android:layout_gravity="center"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="31dp"
-        android:layout_weight="1"
-        android:padding="@dimen/padding_addTrip"
-        android:text="@string/hikesCompleted_summary"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/hikesCompleted"
-        android:layout_width="120dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/hikesCompleted_summary"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/textSize" />
+        <TextView
+            android:id="@+id/text_hikes_completed"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:padding="4dp"
+            android:background="@drawable/main_edittext"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/summaryTextSize" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/hikesCompletedLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:layout_toEndOf="@+id/noOfBagNightsLabel"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/summaryTextSize" />
-
-    <TextView
-        android:id="@+id/kilometersLabel"
-        android:layout_width="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/miles_summary"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/textSize" />
+        <TextView
+            android:id="@+id/text_miles"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:padding="4dp"
+            android:background="@drawable/main_edittext"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/summaryTextSize" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/hikesCompletedLabel"
-        android:layout_below="@+id/hikesCompletedLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:padding="@dimen/padding_addTrip"
-        android:text="@string/kilometers_summary"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/kilometers"
-        android:layout_width="120dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/kilometers_summary"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/textSize" />
+        <TextView
+            android:id="@+id/text_kilometers"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:padding="4dp"
+            android:background="@drawable/main_edittext"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/summaryTextSize" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/kilometersLabel"
-        android:layout_alignStart="@+id/hikesCompleted"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/summaryTextSize" />
-
-    <TextView
-        android:id="@+id/milesLabel"
-        android:layout_width="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/numOfDayHikes_summary"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/textSize" />
+        <TextView
+            android:id="@+id/text_noofday_hikes"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:padding="4dp"
+            android:background="@drawable/main_edittext"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/summaryTextSize" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/kilometersLabel"
-        android:layout_alignStart="@+id/kilometersLabel"
-        android:layout_below="@+id/kilometersLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:padding="@dimen/padding_addTrip"
-        android:text="@string/miles_summary"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/miles"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/noOfDayHikesLabel"
-        android:layout_alignStart="@+id/kilometers"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/summaryTextSize" />
-
-    <TextView
-        android:id="@+id/noOfDayHikesLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/milesLabel"
-        android:layout_below="@+id/milesLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:padding="@dimen/padding_addTrip"
-        android:text="@string/numOfDayHikes_summary"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/noOfDayHikes"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/noOfBagNightsLabel"
-        android:layout_alignStart="@+id/miles"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/summaryTextSize" />
-
-    <TextView
-        android:id="@+id/noOfBagNightsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/noOfDayHikesLabel"
-        android:layout_below="@+id/noOfDayHikesLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="29dp"
-        android:padding="@dimen/padding_addTrip"
-        android:text="@string/numOfBagNights_summary"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/textSize" />
-
-    <EditText
-        android:id="@+id/noOfBagNights"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/noOfBagNightsLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:layout_toEndOf="@+id/noOfBagNightsLabel"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/summaryTextSize" />
-
-</RelativeLayout>
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_addTrip"
+            android:text="@string/bagNights"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/textSize" />
+        <TextView
+            android:id="@+id/text_noofbag_nights"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:padding="4dp"
+            android:background="@drawable/main_edittext"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/summaryTextSize" />
+    </LinearLayout>
+</LinearLayout>

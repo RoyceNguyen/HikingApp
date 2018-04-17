@@ -19,13 +19,23 @@
     <string name="numOfDays_addTrip">No. Of Days:</string>
     <string name="accommodations_addTrip">Accommodations:</string>
     <string name="dailyBreakdown_addTrip">Daily Breakdown:</string>
+    <string name="hikeName_summary">Hike Name:</string>
     <string name="hikesCompleted_summary">Hikes Completed:</string>
     <string name="kilometers_summary">Kilometers:</string>
     <string name="miles_summary">Miles:</string>
-    <string name="numOfDayHikes_summary">No. Of Day Hikes:</string>
-    <string name="numOfBagNights_summary">No. Of Bag Nights:</string>
+    <string name="numOfDayHikes_summary">No. of Day Hikes:</string>
+    <string name="bagHikes">Bag Hikes:</string>
+    <string name="bagNights">No. of Bag Nights:</string>
+    <string name="distance">Distance:</string>
+    <string name="contactInfo">Contact Info:</string>
+    <string name="reminders">Reminders:</string>
+    <string name="wildlifeSeen">Wildlife Seen:</string>
+    <string name="highlights">Highlights:</string>
     <string name="title_mainscreen">Hiking Itinerary</string>
     <string name="title_pastHike">Completed Hikes</string>
+    <string name="title_future_trips">Future Trips</string>
+    <string name="title_completed_trips">Completed Trips</string>
+
     <string name="hike_title">Hikes</string>
     <string name="hikeName_addTrip">Hike Name:</string>
     <string name="numOfDayHikes_addTrip">No. Of Day Hikes:</string>
@@ -110,5 +120,6 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
 
 </resources>

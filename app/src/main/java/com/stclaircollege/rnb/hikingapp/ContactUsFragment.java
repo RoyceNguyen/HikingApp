@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import static com.stclaircollege.rnb.hikingapp.MainActivity.fab;
+
 
 
 /**
@@ -72,7 +72,6 @@ public class ContactUsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_contact_us, container, false);
 
-        fab.setVisibility(View.GONE);
         return view;
 
 
