@@ -334,7 +334,7 @@
             android:padding="@dimen/padding_addTrip">
             <Button
                 android:id="@+id/btn_update_trip"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/endDate"
@@ -343,10 +343,22 @@
                 android:text="Update Trip"
                 android:textAllCaps="false"
                 android:textColor="@color/textAndIcons"
-                android:textSize="20dp" />
+                android:textSize="17dp" />
+            <Button
+                android:id="@+id/btn_share_trip"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary"
+                android:text="Share Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/textAndIcons"
+                android:textSize="17dp" />
             <Button
                 android:id="@+id/btn_cancel"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/endDate"
@@ -354,7 +366,7 @@
                 android:text="Cancel"
                 android:textAllCaps="false"
                 android:textColor="@color/textAndIcons"
-                android:textSize="20dp" />
+                android:textSize="17dp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView >
