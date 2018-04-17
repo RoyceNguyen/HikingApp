@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Switch;
 
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.R;
@@ -16,6 +15,7 @@ import com.suke.widget.SwitchButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
     private Context context;
@@ -38,7 +38,7 @@ public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-    // binds the data to the textview in each row
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.edit_hike_name.setText(listData.get(position).hikeName);
@@ -47,6 +47,11 @@ public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
         holder.edit_distance.setText(listData.get(position).distance + "");
         holder.edit_contact_info.setText(listData.get(position).contactInfo);
         holder.edit_daily_breakdown.setText(listData.get(position).dailyBreakdown);
+        if (listData.get(position).unit == 1) {
+            holder.switch_unit.setChecked(true);
+        } else {
+            holder.switch_unit.setChecked(false);
+        }
 
         holder.edit_hike_name.addTextChangedListener(new TextWatcher() {
             @Override

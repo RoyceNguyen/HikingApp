@@ -40,7 +40,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeListener {
-    private OnFragmentInteractionListener mListener;
+    private AddTripListener mListener;
     private TextView text_start_date;
     private TextView text_end_date;
     private Spinner spinner_trip_organizer;
@@ -69,7 +69,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
     }
 
     @SuppressLint("ValidFragment")
-    public AddTripFragment(OnFragmentInteractionListener listener) {
+    public AddTripFragment(AddTripListener listener) {
         mListener = listener;
     }
 
@@ -388,8 +388,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
         else list_hikes.get(position).unit = 0;
     }
 
-    public interface OnFragmentInteractionListener {
+    public interface AddTripListener {
         void onClickCreateTripButton();
-        void onClickClearButton();
     }
 }

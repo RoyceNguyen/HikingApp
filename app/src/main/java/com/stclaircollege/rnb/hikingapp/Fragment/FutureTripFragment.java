@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.stclaircollege.rnb.hikingapp.Adapter.TripAdapter;
+import com.stclaircollege.rnb.hikingapp.Adapter.FutureTripAdapter;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
 import com.stclaircollege.rnb.hikingapp.R;
 import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
@@ -17,12 +17,12 @@ import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FutureTripFragment extends Fragment implements TripAdapter.ItemTripListener {
+public class FutureTripFragment extends Fragment implements FutureTripAdapter.ItemTripListener {
     private FutureTripListener mListener;
 
     private RecyclerView recyclerView;
     private List<Trip> list_trips = new ArrayList<>();
-    private TripAdapter adapter;
+    private FutureTripAdapter adapter;
 
     private DatabaseHandler handler;
 
@@ -50,8 +50,8 @@ public class FutureTripFragment extends Fragment implements TripAdapter.ItemTrip
 
     private void bindView(View view) {
         recyclerView = view.findViewById(R.id.recyclerView);
-        list_trips = handler.getAllTrips();
-        adapter = new TripAdapter(getContext(), list_trips);
+        list_trips = handler.getFutureTrips();
+        adapter = new FutureTripAdapter(getContext(), list_trips);
         adapter.setEventListener(FutureTripFragment.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
@@ -60,11 +60,11 @@ public class FutureTripFragment extends Fragment implements TripAdapter.ItemTrip
     @Override
     public void onItemClick(View view, int position) {
         if (mListener != null) {
-            mListener.onClickEditTrip(list_trips.get(position).id);
+            mListener.onClickEditFutureTrip(list_trips.get(position).id);
         }
     }
 
     public interface FutureTripListener {
-        void onClickEditTrip(int trip_id);
+        void onClickEditFutureTrip(int trip_id);
     }
 }
