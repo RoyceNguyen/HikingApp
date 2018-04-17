@@ -3,16 +3,15 @@ package com.stclaircollege.rnb.hikingapp.Fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.stclaircollege.rnb.hikingapp.Adapter.FutureTripAdapter;
 import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
 import com.stclaircollege.rnb.hikingapp.R;
+import com.stclaircollege.rnb.hikingapp.Util.Constants;
 import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
 
 import java.util.List;
@@ -69,7 +68,9 @@ public class SummaryFragment extends Fragment {
                 noofbag_nights += hike.noOfBagNights;
                 if (hike.unit == 0) {
                     kilometers += hike.distance;
+                    miles += hike.distance * Constants.KiloVsMile;
                 } else {
+                    kilometers += hike.distance / Constants.KiloVsMile;
                     miles += hike.distance;
                 }
             }
