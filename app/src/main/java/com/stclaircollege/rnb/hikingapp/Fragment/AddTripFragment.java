@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.text.SpannableString;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import com.stclaircollege.rnb.hikingapp.Model.Hike;
 import com.stclaircollege.rnb.hikingapp.Model.Participant;
 import com.stclaircollege.rnb.hikingapp.Model.Trip;
 import com.stclaircollege.rnb.hikingapp.R;
+import com.stclaircollege.rnb.hikingapp.Util.Constants;
 import com.stclaircollege.rnb.hikingapp.Util.DatabaseHandler;
 import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
@@ -101,7 +103,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
         recyclerView.setNestedScrollingEnabled(false);
     }
 
-    void bindView(View view) {
+    void bindView(final View view) {
         autocompleteFragment = (SupportPlaceAutocompleteFragment)getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -174,47 +176,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
         view.findViewById(R.id.btn_participants).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final List<String> names = new ArrayList<>();
-                final List<Integer> ids = new ArrayList<>();
-                for (Participant participant : list_members) {
-                    names.add(participant.name);
-                }
-                new MaterialDialog.Builder(getContext())
-                        .title("Select participants")
-                        .items(names)
-                        .itemsCallbackMultiChoice(
-                                null,
-                                new MaterialDialog.ListCallbackMultiChoice() {
-                                    @Override
-                                    public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-                                        ids.clear();
-                                        for (int i = 0; i < which.length; i++) {
-                                            ids.add(which[i]);
-                                        }
-                                        return true;
-                                    }
-                                })
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                list_participants.clear();
-                                for (Integer id : ids) list_participants.add(names.get(id));
-                                list_ids = ids;
-                                setHashTagData();
-                                dialog.dismiss();
-                            }
-                        })
-                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .alwaysCallMultiChoiceCallback()
-                        .autoDismiss(false)
-                        .positiveText("Add")
-                        .neutralText("Cancel")
-                        .show();
+                onSelectParticipants();
             }
         });
         edit_number_of_days = view.findViewById(R.id.edit_number_of_days);
@@ -251,6 +213,79 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
                 onClickClear();
             }
         });
+    }
+
+    private void onSelectParticipants() {
+        final List<String> names = new ArrayList<>();
+        final List<Integer> ids = new ArrayList<>();
+        for (Participant participant : list_members) {
+            names.add(participant.name);
+        }
+        new MaterialDialog.Builder(getContext())
+                .title("Select participants")
+                .items(names)
+                .itemsCallbackMultiChoice(
+                        null,
+                        new MaterialDialog.ListCallbackMultiChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                                ids.clear();
+                                for (int i = 0; i < which.length; i++) {
+                                    ids.add(which[i]);
+                                }
+                                return true;
+                            }
+                        })
+                .positiveText("Ok")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        list_participants.clear();
+                        for (Integer id : ids) list_participants.add(names.get(id));
+                        list_ids = ids;
+                        dialog.dismiss();
+                        setHashTagData();
+                    }
+                })
+                .negativeText("Add")
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        final MaterialDialog parent = dialog;
+                        new MaterialDialog.Builder(getContext())
+                                .content("Input trip organizer")
+                                .inputType(InputType.TYPE_CLASS_TEXT)
+                                .input("", "", new MaterialDialog.InputCallback() {
+                                    @Override
+                                    public void onInput(MaterialDialog dialog, CharSequence input) {
+                                        if  (input.toString().trim().length()==0) return;
+                                        Participant participant = new Participant();
+                                        participant.name = input.toString();
+                                        handler.addParticipant(participant);
+                                        dialog.dismiss();
+                                        parent.dismiss();
+                                        setSpinner();
+                                        onSelectParticipants();
+                                    }
+                                }).show();
+                    }
+                })
+                .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        for (Integer id : ids) {
+                            handler.deleteParticipant(list_members.get(id).id);
+                            list_members.remove(id);
+                        }
+                        dialog.dismiss();
+                        setSpinner();
+                        onSelectParticipants();
+                    }
+                })
+                .alwaysCallMultiChoiceCallback()
+                .autoDismiss(false)
+                .neutralText("Delete")
+                .show();
     }
 
     private void onClickClear() {
@@ -384,8 +419,11 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
 
     @Override
     public void onUnitSwitchChanged(int position, boolean isChecked) {
-        if (isChecked) list_hikes.get(position).unit = 1;
-        else list_hikes.get(position).unit = 0;
+        if (isChecked) {
+            list_hikes.get(position).unit = 1;
+        } else {
+            list_hikes.get(position).unit = 0;
+        }
     }
 
     public interface AddTripListener {
