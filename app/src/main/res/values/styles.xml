@@ -14,15 +14,13 @@
     </style>
 
     <style name="HoloLightCustom" parent="@android:style/Theme.Holo.Light">
-        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/textAndIcons</item>
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/textAndIcons</item>
     </style>
 
-
-
     <style name="HoloCustom" parent="@android:style/Theme.Holo">
-        <item name="android:windowBackground">@color/colorPrimary2</item>
+        <item name="android:windowBackground">@color/colorPrimary3</item>
         <item name="android:colorBackground">@color/colorPrimary3</item>
         <item name="android:textColor">@color/textAndIcons</item>
     </style>

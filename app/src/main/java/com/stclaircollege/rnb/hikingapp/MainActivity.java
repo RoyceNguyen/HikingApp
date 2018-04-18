@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity
         EditFutureTripFragment.EditFutureTripListener,
         CompletedTripFragment.CompletedTripListener,
         EditCompletedTripFragment.EditCompletedTripListener,
-        SummaryFragment.SummaryListener {
+        SummaryFragment.SummaryListener,
+        ContactUsFragment.OnFragmentInteractionListener,
+        CreditsFragment.OnFragmentInteractionListener {
 
 
     //Adding FragmentManager
