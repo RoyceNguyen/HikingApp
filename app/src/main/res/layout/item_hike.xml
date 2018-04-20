@@ -151,7 +151,6 @@
             android:layout_height="150dp"
             android:background="@drawable/main_edittext"
             android:gravity="left"
-            android:inputType="text"
             android:padding="@dimen/padding_addTrip"
             android:text="" />
     </LinearLayout>

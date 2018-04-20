@@ -17,6 +17,7 @@ import com.suke.widget.SwitchButton;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
     private Context context;
     private LayoutInflater mInflater;
@@ -44,7 +45,7 @@ public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
         holder.edit_hike_name.setText(listData.get(position).hikeName);
         holder.edit_number_of_bag_nights.setText(listData.get(position).noOfBagNights + "");
         holder.edit_number_of_day_hikes.setText(listData.get(position).noOfDayHikes + "");
-        holder.edit_distance.setText(listData.get(position).distance + "");
+        holder.edit_distance.setText(String.format("%.2f", listData.get(position).distance));
         holder.edit_contact_info.setText(listData.get(position).contactInfo);
         holder.edit_daily_breakdown.setText(listData.get(position).dailyBreakdown);
         if (listData.get(position).unit == 1) {
@@ -151,7 +152,7 @@ public class HikeAdapter extends RecyclerView.Adapter<HikeAdapter.ViewHolder> {
                 } else {
                     listData.get(position).distance = listData.get(position).distance / Constants.KiloVsMile;
                 }
-                holder.edit_distance.setText("" + listData.get(position).distance);
+                holder.edit_distance.setText(String.format("%.2f", listData.get(position).distance));
                 if (mListener != null) mListener.onUnitSwitchChanged(position, isChecked);
             }
         });

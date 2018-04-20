@@ -43,7 +43,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView5"
         android:padding="@dimen/padding_addTrip"
-        android:text="Designed the app from colour choices and layout for each fragment too our home page and nav drawer. Created Credits and Contact Us fragments. "
+        android:text="Designed the app from colour choices and layout for each fragment too our home page and nav drawer. Created Credits and Contact Us fragments. As well as the Settings Activity for changing the theme."
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
@@ -53,12 +53,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView6"
+        android:layout_marginTop="26dp"
         android:padding="@dimen/padding_addTrip"
-        android:layout_marginTop="131dp"
+        android:text="Royce:"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize"
-        android:textStyle="bold"
-        android:text="Royce:" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView8"
@@ -71,4 +71,51 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="24dp"
+        android:padding="@dimen/padding_addTrip"
+        android:text="https://github.com/drawers/SpinnerDatePicker for date picker implementation"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="13dp"
+        android:padding="@dimen/padding_addTrip"
+        android:text="https://github.com/afollestad/material-dialogs for the material design dialog used to add participants and organizer"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView10"
+        android:layout_marginTop="13dp"
+        android:padding="@dimen/padding_addTrip"
+        android:text="https://github.com/greenfrvr/hashtag-view for the widget to present data in participant list "
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView11"
+        android:layout_marginTop="21dp"
+        android:padding="@dimen/padding_addTrip"
+        android:text="https://github.com/zcweng/SwitchButton for the switch button to that we used to switch between miles and kilometers"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
 </RelativeLayout>
