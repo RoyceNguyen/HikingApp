@@ -115,7 +115,7 @@ public class AddTripFragment extends Fragment implements HikeAdapter.ItemHikeLis
             }
         });
         AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
-                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ADDRESS)
+                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_NONE)
                 .build();
         autocompleteFragment.setFilter(typeFilter);
         recyclerView = view.findViewById(R.id.recyclerView);

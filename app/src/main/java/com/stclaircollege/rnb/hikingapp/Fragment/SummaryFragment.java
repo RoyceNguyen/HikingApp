@@ -77,8 +77,8 @@ public class SummaryFragment extends Fragment {
         }
 
         text_hikes_completed.setText("" + hikes_completed);
-        text_miles.setText("" + miles);
-        text_kilometers.setText("" + kilometers);
+        text_miles.setText(String.format("%.2f", miles));
+        text_kilometers.setText(String.format("%.2f", kilometers));
         text_noofday_hikes.setText("" + noofday_hikes);
         text_noofbag_nights.setText("" + noofbag_nights);
     }
