@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.stclaircollege.rnb.hikingapp.Fragment.AddTripFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/newTripTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="4dp"
+            android:text="Future Trip Update"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/titleTextSize"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/location_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/main_edittext">
+                <fragment
+                    android:id="@+id/place_autocomplete_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/startDate_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/text_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/main_edittext"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/endDate_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/text_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/main_edittext"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/tripOrganizer_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <Spinner
+                android:id="@+id/spinner_trip_organizer"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/gradient_spinner"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+
+            <Button
+                android:id="@+id/btn_trip_organizer"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:background="@drawable/round_button"
+                android:text="+"
+                android:textColor="@color/textAndIcons"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_addTrip">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/participants_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <LinearLayout
+                android:id="@+id/spinner_participants"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/main_edittext" >
+                <com.greenfrvr.hashtagview.HashtagView
+                    android:id="@+id/hashtags"
+                    android:layout_gravity="center_vertical"
+                    style="@style/HashtagView"
+                    app:rowGravity="left"
+                    app:tagBackground="@drawable/hashtag_background"
+                    app:tagTextColor="@android:color/black"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_participants"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/round_button"
+                android:text="+"
+                android:textColor="@color/textAndIcons"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_addTrip">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/numOfDays_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/edit_number_of_days"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/main_edittext"
+                android:inputType="text"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_addTrip">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/accommodations_addTrip"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+
+            <EditText
+                android:id="@+id/edit_accommodations"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/main_edittext"
+                android:gravity="left"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="4dp"
+            android:text="HIKES"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/titleTextSize" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_addTrip">
+
+            <Button
+                android:id="@+id/btn_add_hike"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_button"
+                android:text="+"
+                android:textColor="@color/textAndIcons"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_remove_hike"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:background="@drawable/rect_button"
+                android:text="-"
+                android:textColor="@color/textAndIcons"
+                android:textSize="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/reminders"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <EditText
+                android:id="@+id/edit_reminders"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/main_edittext"
+                android:inputType="text"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/wildlifeSeen"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <EditText
+                android:id="@+id/edit_wildlife_seen"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/main_edittext"
+                android:inputType="text"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_addTrip">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:gravity="left|center"
+                android:padding="@dimen/padding_addTrip"
+                android:text="@string/highlights"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/textSize" />
+            <EditText
+                android:id="@+id/edit_highlights"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/main_edittext"
+                android:gravity="left"
+                android:padding="@dimen/padding_addTrip"
+                android:text="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding_addTrip">
+            <Button
+                android:id="@+id/btn_complete_trip"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary"
+                android:text="Complete Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/textAndIcons"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/btn_update_trip"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/endDate"
+                android:background="@color/colorPrimary"
+                android:text="Update Trip"
+                android:textAllCaps="false"
+                android:textColor="@color/textAndIcons"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView >

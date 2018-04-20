@@ -3,36 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <!-- Added all icons as well as nav menus -->
+
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_addtrip"
+            android:icon="@drawable/ic_terrain_black_24dp"
+            android:title="Add Trip" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_pasthikes"
+            android:icon="@drawable/ic_check_circle_black_24dp"
+            android:title="Completed Trips" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_futuretrips"
+            android:icon="@drawable/ic_date_range_black_24dp"
+            android:title="Future Trips" />
+        <item
+            android:id="@+id/nav_summary"
+            android:icon="@drawable/ic_assessment_black_24dp"
+            android:title="Total Summary" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_email_black_24dp"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/nav_credits"
+            android:icon="@drawable/ic_people_black_24dp"
+            android:title="Credits" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
 </menu>
+
+
+
+

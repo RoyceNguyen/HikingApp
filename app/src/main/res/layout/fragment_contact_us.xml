@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.stclaircollege.rnb.hikingapp.ContactUsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!-- Creating ContactUs fragment with basic information for the user to contact us via email -->
+
+
+    <TextView
+        android:id="@+id/contactTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/title_contactUs"
+        android:textAllCaps="true"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/contactTitle"
+        android:layout_marginTop="19dp"
+        android:gravity="center"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/message_contactUs"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="19dp"
+        android:gravity="center"
+        android:padding="@dimen/padding_addTrip"
+        android:text="@string/message2_contactUs"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/email"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/textSize"
+        android:autoLink="email"
+        android:textStyle="bold" />
+
+</RelativeLayout>
