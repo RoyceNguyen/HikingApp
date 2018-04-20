@@ -212,7 +212,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/main_edittext"
-                android:inputType="text"
                 android:padding="@dimen/padding_addTrip"
                 android:text="" />
         </LinearLayout>
