@@ -43,7 +43,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView5"
         android:padding="@dimen/padding_addTrip"
-        android:text="Designed the app from colour choices and layout for each fragment too our home page and nav drawer. Created Credits and Contact Us fragments. "
+        android:text="Designed the app from colour choices and layout for each fragment too our home page and nav drawer. Created Credits and Contact Us fragments. As well as the Settings Activity for changing the theme."
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/textSize" />
 
