@@ -262,7 +262,7 @@ public class EditTripFragment extends Fragment implements HikeAdapter.ItemHikeLi
                     setRecyclerView();
                 }
             }
-        });
+        }); 
 
         edit_reminders = view.findViewById(R.id.edit_reminders);
         edit_reminders.setText(trip.reminders);

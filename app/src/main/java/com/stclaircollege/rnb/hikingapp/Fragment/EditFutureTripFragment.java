@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.content.Intent;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.common.api.Status;
@@ -242,6 +242,48 @@ public class EditFutureTripFragment extends Fragment implements HikeAdapter.Item
                 onClickCompleteTrip();
             }
         });
+         view.findViewById(R.id.btn_share_trip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickShare();
+            }
+        });
+    }
+
+    private void onClickShare() {
+      String organizer  = spinner_trip_organizer.getSelectedItem().toString();
+        String participants = "";
+        for (int i = 0; i < list_participants.size(); i++) {
+            if (i > 0) participants = participants + ", ";
+            participants = participants + list_participants.get(i);
+        }
+
+        String hikes = "";
+        for (int i = 0; i < list_hikes.size(); i++) {
+            String hike = "Hike Name: " + list_hikes.get(i).hikeName + "\n" +
+                    "No of day hikes: " + list_hikes.get(i).noOfDayHikes + "\n" +
+                    "No of bag nights: " + list_hikes.get(i).noOfBagNights + "\n" +
+                    "Distance: " + list_hikes.get(i).distance + (list_hikes.get(i).unit == 0 ? "km" : "mile") + "\n" +
+                    "Contact Info: " + list_hikes.get(i).contactInfo + "\n" +
+                    "Daily breakdown: " + list_hikes.get(i).dailyBreakdown + "\n";
+            hikes = hikes + hike;
+        }
+
+        String content = "Location: " + trip.location + "\n" +
+                "Start date: " + trip.startDate + "\n" +
+                "End date: " + trip.endDate + "\n" +
+                "No. Of days: " + trip.noOfDays + "\n" +
+                "Organizer: " + organizer + "\n" +
+                "Participants: " + participants + "\n" +
+                "Accommodations: " + trip.accommodations + "\n" +
+                hikes +
+                "Reminders: " + trip.reminders;
+
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Trip");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, content);
+        startActivity(Intent.createChooser(emailIntent, "Send email..."));
     }
 
     private void onSelectParticipants() {
